@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>login</title>
+
+        <style>
+
+            .left_div {
+                width: 200px;
+                height: 500px;
+                float: left;
+            }
+
+            .right_div {
+                width: 600px;
+                height: 600px;
+                float: left;
+                padding: 40px;
+                margin: 5px;
+            }
+
+            #login_title {
+                font-weight: bold;
+                font-family: sans-serif;
+                font-size: 30px;
+                color: rgb(0, 0, 120);
+                display: inline-block;
+                height: 60px;
+            }
+
+            #welcome {
+                font-family: Arial;
+                font-size: 22px;
+                color: gray;
+                height: 50px;
+            }
+
+            .email_password {
+                font-size: 14px;
+                height: 35px;
+            }
+
+            .email_form {
+                width: 500px;
+                height: 15px;
+                padding: 10px;
+            }
+            
+            input[type="checkbox"] {
+                width: 20px;
+                height: 20px;
+                border: 1px solid #8F85ED;
+            }
+
+            #login {
+                width: 70px;
+                height: 30px;
+                margin: 8px;
+                background-color:#8F85ED;
+                border-radius: 3px;
+                border-color:#8F85ED;
+                font-size: 12px;
+                color: white;
+                font-family: sans-serif;
+                font-weight: bold;
+                float: left;
+            }
+
+            #twitter {
+                width: 200px;
+                height: 30px;
+                margin: 8px;
+                background-color: white;
+                border-radius: 3px;
+                border-color: #8F85ED;
+                font-size: 12px;
+                color:#8F85ED;
+                font-family: sans-serif;
+                font-weight: bold;
+            }
+
+            .Signup {
+                font-family: Arial;
+                font-size: 15px;
+                color: gray;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <!-- img -->
+        <div class="left_div">
+            <img src="left_img.PNG" alt="img" width="200px" height="530px">
+        </div>
+        <!-- Login form -->
+        <div class="right_div">
+
+            <div id="login_title"><b>Noble</b></div>
+            <div style="display: inline-block; font-size: 30px; color: #8F85ED;"><b>UI</b></div>
+            <div id="welcome">Welcome back! Log in to your account.</div>
+            <div class="email_password"><p>Email address</p></div>
+            <div><input type="text" class="email_form" placeholder="Email"></div>
+            <div class="email_password"><p>Password</p></div> <!-- email form -->
+            <div><input type="password" class="email_form" placeholder="Password"></div> <!-- password form -->
+            <div><p class="email_password"><input type="checkbox"> Remember me<p></div> <!-- checkbox -->
+            <p></p>
+            <div><button type="button" id="login">Login</button></div> <!-- Login button -->
+            <div><button type="button" id="twitter"><img src="button_img.png" alt="button_img" width="10px" height="10px">
+                Login with twitter</button></div> <!-- Login with twitter button -->
+            <div class="Signup"><p>Not a user? Sign up</p></div> <!-- Sign up -->
+
+        </div>
+
+    </body>
+</html>
