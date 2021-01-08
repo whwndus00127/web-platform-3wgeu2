@@ -1,0 +1,332 @@
+.keyb_grid-container {
+  display: grid;
+  background-color: black;
+  grid-template-columns: 40px auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-gap: 5px;
+  padding: 5px;
+}
+
+.keyb_grid-container > div {
+  background-color: gray;
+  text-align: center;
+  padding: 10px;
+  font-size: 10px;
+}
+
+#keyb_Esc {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#keyb_Tab {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#keyb_Caps {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#keyb_Shift {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+#keyb_Shift2 {
+  grid-column-start: 14;
+  grid-column-end: 16;
+}
+
+#keyb_Ctrl {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#keyb_Space {
+  grid-column-start: 6;
+  grid-column-end: 12;
+}
+
+#keyb_hanja {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+
+.cal_div_table {
+  display: table;
+  border: 1px solid black;
+  text-align: center;
+  width: 900px;
+  overflow: hidden;
+}
+
+.cal_div_dayrow,
+.cal_div_numrow {
+  display: table-row;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.cal_div_numrow {
+  height: 90px;
+  text-align: left;
+}
+
+.cal_div_day {
+  display: table-cell;
+  border: 1px solid black;
+  background-color: orange;
+}
+
+.cal_div_satday {
+  display: table-cell;
+  border: 1px solid black;
+  background-color: orange;
+  color: blue;
+}
+
+.cal_div_sunday {
+  display: table-cell;
+  border: 1px solid black;
+  background-color: orange;
+  color: red;
+}
+
+.cal_div_numcell {
+  display: table-cell;
+  border: 1px solid black;
+}
+
+.cal_div_satnumcell {
+  display: table-cell;
+  border: 1px solid black;
+  color: blue;
+}
+
+.cal_div_sunnumcell {
+  display: table-cell;
+  border: 1px solid black;
+  color: red;
+}
+
+.calculator_flex_container {
+  display: flex;
+  width: 35%;
+  background-color: gray;
+}
+
+.calculator_flex_container > div {
+  background-color: white;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+.calculator_grid_container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: black;
+  padding: 10px;
+  width: 50%;
+}
+
+.calculator_grid_container > div {
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+}
+
+#calculator_grid_formula {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.dev_flex_container {
+  display: flex;
+  justify-content: center;
+  background-color: darkgray;
+  font-size: 30px;
+  font-family: Arial;
+}
+
+.dev_dayname {
+  display: grid;
+  background-color: black;
+  font-family: Arial;
+  padding: 1px;
+  grid-template-columns: auto auto auto auto auto auto auto;
+}
+
+.dev_dayname > div {
+  background-color: white;
+  margin: 1px;
+  padding: 5px;
+  line-height: 25px;
+  font-weight: bold;
+}
+
+.dev_name_center {
+  text-align: center;
+}
+
+.dev_sun {
+  color: red;
+}
+
+.dev_sat {
+  color: blue;
+}
+
+.dev_daynum {
+  height: 100px;
+  text-align: left;
+}
+
+#dev_sunday {
+  color: red;
+  text-align: center;
+}
+
+#dev_saturday {
+  color: blue;
+  text-align: center;
+}
+
+#dev_sinjeong {
+  color: red;
+}
+
+.bitcoin_title {
+  border-collapse: collapse;
+  width: 800px;
+  background-color: white;
+  border-top: 4px solid whitesmoke;
+  border-bottom: 1px solid gray;
+}
+
+.title_blue {
+  border-bottom: 3px solid blue;
+  color: blue;
+}
+
+.bitcoin_body {
+  border-collapse: collapse;
+  width: 800px;
+}
+
+.body_border {
+  background-color: whitesmoke;
+  border-bottom: 1px solid gray;
+}
+
+.nowtime {
+  float: left;
+  margin: 5px;
+}
+
+.krw_price {
+  color: red;
+  font-weight: bold;
+}
+
+.krw_percent {
+  color: blue;
+  font-weight: bold;
+}
+
+.krw_won {
+  float: right;
+  margin: 5px;
+}
+
+.background_whitesmoke {
+  background-color: whitesmoke;
+}
+
+.list_div_grid {
+  display: grid;
+  grid-template-columns: 240px 240px 240px;
+}
+
+.list_div_title {
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  float: left;
+  padding: 10px;
+}
+
+#list_div_blue {
+  border-bottom: 2px solid blue;
+  color: blue;
+}
+
+.list_div_normal {
+  border: 1px solid whitesmoke;
+  text-align: right;
+  padding: 10px;
+  max-height: 20px;
+  height: 20px;
+}
+
+.list_div_normal_left {
+  border: 1px solid whitesmoke;
+  text-align: left;
+  padding: 10px;
+  max-height: 20px;
+  height: 20px;
+}
+
+.list_div_total {
+  border: 1px solid whitesmoke;
+  text-align: center;
+  padding: 10px;
+  color: red;
+  font-weight: bold;
+  background-color: rgba(0, 0, 255, 10%);
+  height: 20px;
+  max-height: 20px;
+}
+
+.list_div_total_red {
+  border: 1px solid whitesmoke;
+  text-align: center;
+  padding: 10px;
+  color: red;
+  font-weight: bold;
+  background-color: rgba(255, 0, 0, 10%);
+  height: 20px;
+  max-height: 20px;
+}
+
+.list_div_order {
+  padding: 10px;
+  height: 20px;
+  max-height: 20px;
+}
+
+.list_div_foot1 {
+  background-color: whitesmoke;
+  padding: 15px;
+  text-align: right;
+  border: 1px solid gray;
+}
+
+.list_div_foot2 {
+  background-color: whitesmoke;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid gray;
+}
+
+.list_div_foot3 {
+  background-color: whitesmoke;
+  padding: 15px;
+  text-align: left;
+  border: 1px solid gray;
+}

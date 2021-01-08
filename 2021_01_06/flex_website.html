@@ -1,0 +1,138 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>flex_website</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: Arial;
+			margin: 0;
+		}
+
+		.header {
+			padding: 60px;
+			text-align: center;
+			background: #1abc9c;
+			color: white;
+		}
+
+		.navbar {
+			display: flex;
+			background-color: #333;
+		}
+
+		.navbar a {
+			color: white;
+			padding: 14px 20px;
+			text-decoration: none;
+			text-align: center;
+		}
+
+		.navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+
+		.row {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.side {
+			flex: 30%;
+			background-color: #f1f1f1;
+			padding: 20px;
+		}
+
+		.main {
+			flex: 70%;
+			background-color: white;
+			padding: 20px;
+		}
+
+		.fakeimg {
+			background-color: #aaa;
+			width: 100%;
+			padding: 20px;
+		}
+
+		.footer {
+			padding: 20px;
+			text-align: center;
+			background: #ddd;
+		}
+
+		@media screen and (max-width: 700px) {
+
+			.row,
+			.navbar {
+				flex-direction: column;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div style="background: yellow; padding: 5px;">
+		<h4 style="text-align: center;">브라우저의 창 크기에 따라 반응효과가 나타납니다.</h4>
+	</div>
+
+	<div class="header">
+		<h1>나의 웹사이트</h1>
+		<p><b>플렉스 형식</b> 레이아웃</p>
+	</div>
+
+	<div class="navbar">
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+	</div>
+
+	<div class="row">
+		<div class="side">
+			<h2>나에 대해</h2>
+			<h5>내 사진 : </h5>
+			<div class="fakeimg" style="height: 200px;">Image</div>
+			<p>여기에 간략한 설명을 입력하세요.</p> <br>
+			<h3>다른 글</h3>
+			<p>이미지를 클릭하세요</p>
+			<div class="fakeimg" style="height: 60px;">Image</div>
+			<div class="fakeimg" style="height: 60px;">Image</div>
+			<div class="fakeimg" style="height: 60px;">Image</div>
+			<div class="fakeimg" style="height: 60px;">Image</div>
+			<div class="fakeimg" style="height: 60px;">Image</div>
+			<div class="fakeimg" style="height: 60px;">Image</div>
+		</div>
+		<div class="main">
+			<h2>제목</h2>
+			<H5>날짜</H5>
+			<div class="fakeimg" style="height: 200px;">Image</div>
+			<p>설명</p>
+			<p>여기에 설명을 입력하세요.</p>
+			<br>
+			<h2>제목</h2>
+			<h5>날짜</h5>
+			<div class="fakeimg" style="height: 200px;">Image</div>
+			<p>설명</p>
+			<p>여기에 설명을 입력하세요.</p>
+		</div>
+	</div>
+
+	<div class="footer">
+		<h2>Footer</h2>
+	</div>
+
+</body>
+
+</html>
