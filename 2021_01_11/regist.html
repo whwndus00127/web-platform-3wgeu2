@@ -2,42 +2,44 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>login</title>
+        <title>regist</title>
 
         <style>
+        html, body {
+            height: 100%;
+        }
 
-            html, body {
-                height: 100%;
-            }
+        body {
+            display: table;
+            margin: 0 auto;
+        }
 
-            body {
-                display: table;
-                margin: 0 auto;
-                
-            }
-
-            .left_div {
+        .left_div {
                 display: table-cell;
                 vertical-align: middle;
                 margin-top: 2px;
             }
-
-            @media (max-width: 830px) {
+        
+        @media (max-width: 830px) {
                 .left_div {
                     display: none;
-                }
-            }
+             }
+        }
 
-            .right_div {
+        .right_div {
                 padding: 25px;
                 max-width: 100%;
                 max-height: 100%;
                 box-shadow: 1px 1px 1px 2px whitesmoke;
+                width: 450px;
             }
 
-            
+        .right_container {
+                display: table-cell;
+                vertical-align: middle;
+            }
 
-            #login_title {
+         #login_title {
                 font-weight: bold;
                 font-family: sans-serif;
                 font-size: 30px;
@@ -46,31 +48,31 @@
                 height: 60px;
             }
 
-            #welcome {
+         #welcome {
                 font-family: Arial;
                 font-size: 22px;
                 color: gray;
                 height: 50px;
             }
 
-            .email_password {
+        .email_password {
                 font-size: 14px;
                 height: 35px;
             }
 
-            .email_form {
+        .email_form {
                 width: 90%;
                 height: 15px;
                 padding: 10px;
             }
-            
-            input[type="checkbox"] {
+
+
+        input[type="checkbox"] {
                 width: 5%;
                 height: 20px;
                 border: 1px solid #8F85ED;
             }
-
-            #login {
+        #btn_Signup {
                 width: 15%;
                 height: 30px;
                 margin: 8px;
@@ -84,7 +86,7 @@
                 float: left;
             }
 
-            #login:hover {
+            #btn_Signup:hover {
                 animation-name: login_hover;
                 animation-fill-mode: forwards;
                 animation-duration: 0.3s;
@@ -95,7 +97,7 @@
                     to {background-color: blue; border-color: blue;}
                 }
 
-            #twitter {
+            #btn_Signup_twitter {
                 width: 40%;
                 height: 30px;
                 margin: 8px;
@@ -108,7 +110,7 @@
                 font-weight: bold;
             }
 
-            #twitter:hover {
+            #btn_Signup_twitter:hover {
                 animation-name: twitter_hover;
                 animation-fill-mode: forwards;
                 animation-duration: 0.3s;
@@ -118,48 +120,38 @@
                 from {background-color: white; border-color: #8F85ED; color: #8F85ED;}
                     to {background-color: #8F85ED; border-color: #8F85ED; color: white;}
                 }
-
             .Signup {
                 font-family: Arial;
                 font-size: 15px;
                 color: gray;
-            }
-
-            .right_container {
-                display: table-cell;
-                vertical-align: middle;
-            }
-
+            } 
         </style>
     </head>
 
     <body>
-        <!-- img -->
+        
         <div class="left_div">
-            <div class="align_center"><img src="https://github.com/whwndus00127/web-platform-3wgeu2/blob/master/2021_01_08/left_img.PNG?raw=true" alt="img" width="150px" height="494px"></div>
+            <div><img src="https://github.com/whwndus00127/web-platform-3wgeu2/blob/master/2021_01_08/left_img.PNG?raw=true" alt="img" width="150px" height="585px"></div>
         </div>
-        <!-- Login form -->
+
         <div class="right_container">
-        <div class="right_div">
-
-            <div id="login_title"><b>Noble</b></div>
-            <div style="display: inline-block; font-size: 30px; color: #8F85ED;"><b>UI</b></div>
-            <div id="welcome">Welcome back! Log in to your account.</div>
-            <div class="email_password"><p>Email address</p></div>
-            <div><input type="text" class="email_form" placeholder="Email"></div>
-            <div class="email_password"><p>Password</p></div> <!-- email form -->
-            <div><input type="password" class="email_form" placeholder="Password"></div> <!-- password form -->
-            <div><p class="email_password"><input type="checkbox"> Remember me<p></div> <!-- checkbox -->
-            <p></p>
-            <div><button type="button" id="login" onclick="alert('이메일 및 비밀번호가 틀립니다.')">Login</button></div> <!-- Login button -->
-            <div><button type="button" id="twitter" onclick="alert('트위터 로그인 페이지로 이동합니다.')"><img src="https://github.com/whwndus00127/web-platform-3wgeu2/blob/master/2021_01_08/button_img.PNG?raw=true" alt="button_img" width="10%" height="10px">
-                Login with twitter</button></div> <!-- Login with twitter button -->
-            <div class="Signup"><a href="../2021_01_11/regist.html"><p>Not a user? Sign up</p></a></div> <!-- Sign up -->
-
+            <div class="right_div">
+                <div id="login_title"><b>Noble</b></div>
+                <div style="display: inline-block; font-size: 30px; color: #8F85ED;"><b>UI</b></div>
+                <div id="welcome">Create a free account.</div>
+                <div class="email_password"><p>Username</p></div>
+                <div><input type="text" class="email_form" placeholder="Username"></div>
+                <div class="email_password"><p>Email address</p></div>
+                <div><input type="text" class="email_form" placeholder="Email"></div>
+                <div class="email_password"><p>Password</p></div>
+                <div><input type="password" class="email_form" placeholder="Password"></div>
+                <div><p class="email_password"><input type="checkbox"> Remember me<p></div> <!-- checkbox -->
+                    <p></p>
+                <div><button type="button" id="btn_Signup" onclick="alert('이메일 및 비밀번호가 틀립니다.')">Sign up</button></div> <!-- Login button -->
+                <div><button type="button" id="btn_Signup_twitter" onclick="alert('트위터 로그인 페이지로 이동합니다.')"><img src="https://github.com/whwndus00127/web-platform-3wgeu2/blob/master/2021_01_08/button_img.PNG?raw=true" alt="button_img" width="10%" height="10px">
+                    Sign up with twitter</button></div> <!-- Login with twitter button -->
+                <div class="Signup"><a href="../2021_01_08/login.html"><p>Already a user? Sign in</p></a></div>
+            </div>
         </div>
-    </div>
-
-        <a href="html_list_0108.html">back</a>
-
     </body>
 </html>
