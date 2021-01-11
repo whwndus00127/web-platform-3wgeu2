@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>account_book</title>
+
+        <style>
+            .list_table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+    
+            .list_table>thead,
+            tbody {
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+                font-family: Arial;
+            }
+    
+            tbody:hover {
+                background-color: #f5f5f5;
+            }
+        </style>
+        
+
+        <script>
+
+
+
+        </script>
+    </head>
+    <body>
+        <button onclick="add_row()">지출추가</button>
+        <button onclick="delete_row()">지출제거</button>
+        <button onclick="my_money()">초기금액 설정</button>
+    
+        <table class="list_table">
+            <thead>
+                <th>지출명</th>
+                <th>지출금액</th>
+                <th>남은금액</th>
+            </thead>
+            <tbody id="my-tbody"></tbody>
+            <script>
+                var money = 0;
+                function my_money() {
+                    money = prompt("초기 금액 설정 : ") // 초기 금액 설정
+                }
+               function add_row() {
+                var my_tbody = document.getElementById('my-tbody');
+                var row = my_tbody.insertRow( my_tbody.rows.length );
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var name = prompt("지출 이름을 입력하세요."); // 지출명
+                var cost = prompt("지출금액을 입력하세요."); // 지출금액
+                cell1.innerHTML = name;
+                cell2.innerHTML = cost + "원";
+                money = money - cost; // 초기금액에서 지출금액을 뺀 값
+                cell3.innerHTML = money + "원";
+                }
+
+                function delete_row() {
+                var my_tbody = document.getElementById('my-tbody');
+                if (my_tbody.rows.length < 1) return;
+                my_tbody.deleteRow( my_tbody.rows.length-1 );
+                }
+            </script>
+        </table>
+    </body>
+</html>
