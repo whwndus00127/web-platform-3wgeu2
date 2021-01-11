@@ -17,7 +17,7 @@
                 font-family: Arial;
             }
     
-            tbody:hover {
+            tr:hover {
                 background-color: #f5f5f5;
             }
         </style>
@@ -60,7 +60,7 @@
                 cell3.innerHTML = money + "원";
                 }
 
-                function delete_row() {
+                function delete_row() { // 잘못 기입했을 시 행 제거 함수
                 var my_tbody = document.getElementById('my-tbody');
                 if (my_tbody.rows.length < 1) return;
                 my_tbody.deleteRow( my_tbody.rows.length-1 );
