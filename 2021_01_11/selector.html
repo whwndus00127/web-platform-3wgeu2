@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>selector</title>
+
+        <style>
+
+            #one {
+                background-color: red;
+            }
+
+            .two {
+                background-color: orange;
+            }
+
+            input[type=text] {
+                background-color: palegoldenrod;
+            }
+
+            p[class^=f] {
+                background-color: palegreen;
+            }
+
+            body > .three {
+                background-color: yellow;
+            }
+
+            .five+p {
+                background-color: blue;
+            }
+
+            .container:last-child {
+                background-color: darkblue;
+            }
+
+            .a:first-child {
+                background-color: violet;
+            }
+            
+            .a:last-child {
+                background-color: tomato;
+            }
+
+            .a:nth-child(2) {
+                background-color: teal;
+            }
+
+            h1:active {
+                background-color: turquoise;
+            }
+
+            h2:hover {
+                background-color: fuchsia;
+            }
+
+            h3::first-letter {
+                background-color: gold;
+            }
+
+            h4::selection {
+                background-color: gold;
+            }
+
+            .b:nth-last-child(2) {
+                background-color: gray;
+            }
+
+            li[class^=a] {
+                background-color: green;
+            }
+
+            li[class*=el] {
+                background-color: mediumblue;
+            }
+
+            input[type=password]:focus {
+                color: cyan;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            table, td, th {
+                border: 1px solid black;
+                text-align: center;
+            }
+
+            th:first-child {
+                background-color: red;
+            }
+
+            td:first-child {
+                background-color: royalblue;
+            }
+
+            td:first-of-type {
+                background-color: saddlebrown;
+            }
+
+            td:last-of-type {
+                background-color: salmon;
+            }
+
+            td:nth-child(2) {
+                background-color: springgreen;
+            }
+            
+            td:nth-last-child(2) {
+                background-color: violet;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        
+        <p id="one">첫번째 문장</p>
+        <p class="two">두번째 문장</p>
+        <p class="three">세번째 문장</p>
+        <p class="four">네번째 문장</p>
+        <p class="five">다섯번째 문장</p>
+        <p>여섯번째 문장</p>
+
+        <input type="text">
+
+        <ul>
+            <li class="a">1</li>
+            <li class="a">2</li>
+            <li class="a">3</li>
+        </ul>
+
+        <ul>
+            <li class="b">1</li>
+            <li class="b">2</li>
+            <li class="b">3</li>
+        </ul>
+
+        <ul>
+            <li class="apple"></li>
+            <li class="abcd"></li>
+            <li class="melon"></li>
+        </ul>
+
+        <h1>click</h1>
+        <h2>hover</h2>
+
+        <h3>안녕하세요 반갑습니다</h3>
+
+        <h4>DragDragDragDragDrag</h4>
+
+        <input type="password">
+
+
+        <table>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+                <th>Job</th>
+            </tr>
+            <tr>
+                <td>CHO</td>
+                <td>JOO YEON</td>
+                <td>24</td>
+                <td>Programmer</td>
+            </tr>
+            <tr>
+                <td>CHO</td>
+                <td>YU RIM</td>
+                <td>29</td>
+                <td>Nurse</td>
+            </tr>
+            <tr>
+                <td>LEE</td>
+                <td>MIN HO</td>
+                <td>24</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>BYEON</td>
+                <td>SEOK YOUNG</td>
+                <td>24</td>
+                <td>Army</td>
+            </tr>
+        </table>
+    </body>
+</html>
