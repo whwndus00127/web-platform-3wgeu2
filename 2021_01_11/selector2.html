@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>selector2</title>
+
+        <style>
+
+            a:active {
+                background-color: yellow;
+            }
+
+            p:empty {
+                width: 100px;
+                height: 20px;
+                background-color: #ff2222;
+            }
+
+            input[type=text]:disabled {
+                background-color: gray;
+            }
+
+            input:in-range {
+                border: 2px solid red;
+            }
+            
+            input:read-only {
+                background-color: cyan;
+            }
+
+            div[class="test"] {
+                background-color: #ffff00;
+            }
+
+            .after::after {
+                content: " - CHO JOO YEON";
+            }
+            
+            .before::before {
+                content: "CHO JOO YEON ";
+            }
+
+            .invaild:invalid {
+                border: 2px solid red;
+            }
+
+            p:lang(k) {
+                background-color: teal;
+            }
+
+        </style>
+    </head>
+
+<body>
+    
+    <a href="">gogo</a>
+    <p></p>
+    <p>not empty</p>
+
+    <input type="text" disabled="disabled">
+    <input type="text" value="able" readonly>
+
+    <input type="number" min="10" max="30" value="15">
+
+    <div class="first_test">The first div element.</div>
+    <div class="second">The second div element.</div>
+    <div class="test">The third div element.</div>
+    <div class="test_ex">The fourth div element.</div>
+    <p class="test">This is a paragraph.</p>
+    <p class="test_ex">This is a paragraph.</p>
+
+
+    <p class="after">My name is </p>
+    <p class="before"><<<< this is my name.</p>
+
+    <span>33</span>
+    <strong>44</strong>
+    <p>99</p>
+
+    <p lang="k">ㄱㄱ</p>
+
+    <input type="email" value="emailtype" class="invaild">
+
+
+</body>
+
+</html>
