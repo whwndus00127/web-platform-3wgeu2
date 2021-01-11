@@ -17,10 +17,9 @@
             }
 
             .left_div {
-                width: 150px;
-                height: 100%;
                 display: table-cell;
                 vertical-align: middle;
+                margin-top: 2px;
             }
 
             @media (max-width: 830px) {
@@ -30,10 +29,13 @@
             }
 
             .right_div {
-                padding: 40px;
-                margin: 5px;
+                padding: 25px;
                 max-width: 100%;
                 max-height: 100%;
+                box-shadow: 1px 1px 1px 2px whitesmoke;
+            }
+
+            .right_container {
                 display: table-cell;
                 vertical-align: middle;
             }
@@ -88,7 +90,7 @@
             #login:hover {
                 animation-name: login_hover;
                 animation-fill-mode: forwards;
-                animation-duration: 1s;
+                animation-duration: 0.3s;
             }
 
             @keyframes login_hover {
@@ -112,7 +114,7 @@
             #twitter:hover {
                 animation-name: twitter_hover;
                 animation-fill-mode: forwards;
-                animation-duration: 1s;
+                animation-duration: 0.3s;
             }
 
             @keyframes twitter_hover {
@@ -131,10 +133,11 @@
 
     <body>
         <!-- img -->
-        <div class="left_div" class="none">
-            <div class="align_center"><img src="https://github.com/whwndus00127/web-platform-3wgeu2/blob/master/2021_01_08/left_img.PNG?raw=true" alt="img" width="100%" height="500px"></div>
+        <div class="left_div">
+            <div class="align_center"><img src="https://github.com/whwndus00127/web-platform-3wgeu2/blob/master/2021_01_08/left_img.PNG?raw=true" alt="img" width="150px" height="494px"></div>
         </div>
         <!-- Login form -->
+        <div class="right_container">
         <div class="right_div">
 
             <div id="login_title"><b>Noble</b></div>
@@ -152,6 +155,7 @@
             <div class="Signup"><p>Not a user? Sign up</p></div> <!-- Sign up -->
 
         </div>
+    </div>
 
         <a href="html_list_0108.html">back</a>
 
