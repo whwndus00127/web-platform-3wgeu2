@@ -35,10 +35,7 @@
                 box-shadow: 1px 1px 1px 2px whitesmoke;
             }
 
-            .right_container {
-                display: table-cell;
-                vertical-align: middle;
-            }
+            
 
             #login_title {
                 font-weight: bold;
@@ -128,6 +125,11 @@
                 color: gray;
             }
 
+            .right_container {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
         </style>
     </head>
 
@@ -149,10 +151,10 @@
             <div><input type="password" class="email_form" placeholder="Password"></div> <!-- password form -->
             <div><p class="email_password"><input type="checkbox"> Remember me<p></div> <!-- checkbox -->
             <p></p>
-            <div><button type="button" id="login">Login</button></div> <!-- Login button -->
-            <div><button type="button" id="twitter"><img src="https://github.com/whwndus00127/web-platform-3wgeu2/blob/master/2021_01_08/button_img.PNG?raw=true" alt="button_img" width="10%" height="10px">
+            <div><button type="button" id="login" onclick="alert('이메일 및 비밀번호가 틀립니다.')">Login</button></div> <!-- Login button -->
+            <div><button type="button" id="twitter" onclick="alert('트위터 로그인 페이지로 이동합니다.')"><img src="https://github.com/whwndus00127/web-platform-3wgeu2/blob/master/2021_01_08/button_img.PNG?raw=true" alt="button_img" width="10%" height="10px">
                 Login with twitter</button></div> <!-- Login with twitter button -->
-            <div class="Signup"><p>Not a user? Sign up</p></div> <!-- Sign up -->
+            <div class="Signup"><a href="../2021_01_11/regist.html"><p>Not a user? Sign up</p></a></div> <!-- Sign up -->
 
         </div>
     </div>
