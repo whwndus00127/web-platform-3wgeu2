@@ -27,4 +27,6 @@
  
  * 지역변수 / 전역변수 개념 학습
 
+ * CSS 선택자 응용 복습
+
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
