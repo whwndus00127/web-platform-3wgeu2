@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>grade_calculator</title>
+    
+        <script>
+
+            var subject = prompt("총 과목 개수를 입력하세요");
+            var i;
+            var total = 0;
+
+            var grade = new Array(subject);
+            var name = new Array();
+
+            for(i=1; i<=subject; i++) {
+                grade[i] = prompt("과목 " + i + "의 점수를 입력하세요.");
+                if(grade[i] >= 95) {
+                    grade[i] = 4.5;
+                }
+                else if(grade[i] >= 90) {
+                    grade[i] = 4.0;
+                }
+                else if(grade[i] >= 85) {
+                    grade[i] = 3.5;
+                }
+                else if(grade[i] >= 80) {
+                    grade[i] = 3.0;
+                }
+                else if(grade[i] >= 75) {
+                    grade[i] = 2.5;
+                }
+                else if(grade[i] >= 70) {
+                    grade[i] = 2.0;
+                }
+                else {
+                    grade[i] = 0.0;
+                }
+                document.write("과목" + i + "의 점수 : " + grade[i] + "점<br>");
+                total = total + grade[i];
+            }
+            document.write("<br>학점 평균은 " + total/(i-1) + " 입니다.")
+            
+            
+
+        </script>
+    
+
+    </head>
+
+
+<body>
+    
+
+</body>
+</html>
