@@ -28,5 +28,17 @@
  * 지역변수 / 전역변수 개념 학습
 
  * CSS 선택자 응용 복습
+ 
+ ### 1월 12일
+ 
+ * Javascript 기초 학습
+ 
+ * Javascript 변수 선언 및 문자열 실습
+ 
+ * 문자열 함수 학습
+ 
+ * Javascript 예제 작성 및 효율적인 오류 해결방법 학습
+
+ * alert 및 prompt 등 기초적인 기능 
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
