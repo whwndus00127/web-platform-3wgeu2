@@ -45,10 +45,12 @@
  
  * Javascript ES6 학습
  
+ * 변수인 var, let, const의 개념 및 차이점 학습
+ 
  * Javascript를 이용하여 html의 태그 생성 학습
  
  * ES6과 축약코드를 사용하여 기존 프로젝트 변환 실습
 
- * Javascript를 이용하여 태그의 클래스 지정하는 방법 
+ * Javascript를 이용하여 태그의 클래스 지정하는 방법 학습
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
