@@ -52,7 +52,6 @@ for(let j = 0; j < x; j++) {
     middleTd.className = "middle_text_align";
     }
 
-
 // 나머지 구성요소
 for(let i = 0; i < y; i++) {
 const bodyTr = document.createElement('tr');
