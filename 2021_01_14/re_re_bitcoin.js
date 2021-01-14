@@ -47,7 +47,7 @@ setInterval(function() {
             tr.appendChild(th);
     }
 }
-    // 4행 1열 테이블 생성 및 데이터 입력
+    // td 생성 및 데이터 입력
     function createMiddleTd(data, classname) {
         for(let i = 0; i < x; i++) {
             insertItem(item, 1, 2, 3, 40000000, 8, 3000000);
