@@ -62,5 +62,7 @@
  * 함수를 사용하여 기존의 함수를 사용하지 않은 테이블 수정
  
  * setInterval을 이용하여 일정 시간마다 코드 반복하는 방법 학습
+ 
+ * 객체의 개념 학습 및 객체 사용 실습
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
