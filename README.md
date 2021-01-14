@@ -52,5 +52,13 @@
  * ES6과 축약코드를 사용하여 기존 프로젝트 변환 실습
 
  * Javascript를 이용하여 태그의 클래스 지정하는 방법 학습
+ 
+ ### 1월 14일
+ 
+ * Javascript function(함수) 사용법 학습
+ 
+ * 함수의 매개변수를 지정하여 변수를 전달하는 방법 학습
+ 
+ * 함수를 사용하여 기존의 함수를 사용하지 않은 테이블 수정
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
