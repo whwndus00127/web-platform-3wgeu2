@@ -60,5 +60,7 @@
  * 함수의 매개변수를 지정하여 변수를 전달하는 방법 학습
  
  * 함수를 사용하여 기존의 함수를 사용하지 않은 테이블 수정
+ 
+ * setInterval을 이용하여 일정 시간마다 코드 반복하는 방법 학습
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
