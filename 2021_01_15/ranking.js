@@ -1,6 +1,4 @@
-                let div, dataDiv;
-                div = document.createElement('div');
-                document.body.appendChild(div);
+                let dataDiv;
 
 var key = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -24,18 +22,38 @@ var key = [
     { rank: 19, company: "Crédit Agricole", revenues: 110764.6, profits: 7434.3, pq_index:18, pq_order:18},
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19}];
 
+    // left
     for(var i in Object.keys(key[0])) {
         dataDiv = document.createElement('div');
-        div.appendChild(dataDiv);
+        document.getElementById('left').appendChild(dataDiv);
         dataDiv.className = 'data';
         dataDiv.textContent = Object.keys(key[0])[i];
     }
 
     for(var i in Object.values(key)) {
+  
         for(var j = 0; j < Object.values(key[j]).length; j++) {
         dataDiv = document.createElement('div');
-        div.appendChild(dataDiv);
+        document.getElementById('left').appendChild(dataDiv);
         dataDiv.className = 'data';
         dataDiv.textContent = Object.values(key[i])[j];
     }
+}
+
+// right
+for(var i in Object.keys(key[0])) {
+    dataDiv = document.createElement('div');
+    document.getElementById('right').appendChild(dataDiv);
+    dataDiv.className = 'data';
+    dataDiv.textContent = Object.keys(key[0])[i];
+}
+
+for(var i in Object.values(key)) {
+
+    for(var j = 0; j < Object.values(key[j]).length; j++) {
+    dataDiv = document.createElement('div');
+    document.getElementById('right').appendChild(dataDiv);
+    dataDiv.className = 'data';
+    dataDiv.textContent = Object.values(key[i])[j];
+}
 }
