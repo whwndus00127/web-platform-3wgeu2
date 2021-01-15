@@ -70,5 +70,7 @@
  * Javascript 객체를 사용하여 기존 프로젝트 변환
  
  * 함수의 매개변수를 객체로 전달하는 실습
+ 
+ * clearInterval을 이용하여 setInterval의 행동을 중단하는 기능 학습
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
