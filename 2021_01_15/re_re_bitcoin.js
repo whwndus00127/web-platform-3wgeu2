@@ -1,7 +1,7 @@
 const x = 4, y=12, obj = {range1:40000000, fixed:8, range2:3000000}; item = [4];
 toptab = ['체결', '일별'], 
 tab = ['체결시간', '체결가격(KRW)', '체결량(BTC)', '체결금액(KRW)'];
-let div, table, tr, nowMonth, nowDay, nowHour, nowMinute;
+let div, table, tr, nowMonth, nowDay, nowHour, nowMinute, click = 1;
 
 // 시간 새로고침 함수
 function timeRefresh() {
@@ -24,8 +24,9 @@ let t = new Date(),
         createMiddleTd(item[i], 'body_td');
     }
 
+
 // 2초마다 새로운 데이터 출력 및 시간동기화
-setInterval(function() {
+var newData = setInterval(function() {
     timeRefresh();
     createTable('bitcoin_body');
     item = insertItem(obj);
