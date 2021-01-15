@@ -64,5 +64,11 @@
  * setInterval을 이용하여 일정 시간마다 코드 반복하는 방법 학습
  
  * 객체의 개념 학습 및 객체 사용 실습
+ 
+ ### 1월 15일
+ 
+ * Javascript 객체를 사용하여 기존 프로젝트 변환
+ 
+ * 함수의 매개변수를 객체로 전달하는 실습
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
