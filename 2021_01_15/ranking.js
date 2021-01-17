@@ -22,38 +22,31 @@ var key = [
     { rank: 19, company: "Crédit Agricole", revenues: 110764.6, profits: 7434.3, pq_index:18, pq_order:18},
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19}];
 
-    // left
-    for(var i in Object.keys(key[0])) {
+    //function
+    function createList(position) {
+        for(var i in Object.keys(key[0])) {
         dataDiv = document.createElement('div');
-        document.getElementById('left').appendChild(dataDiv);
+        document.getElementById(position).appendChild(dataDiv);
         dataDiv.className = 'data';
         dataDiv.textContent = Object.keys(key[0])[i];
+        }
     }
 
-    for(var i in Object.values(key)) {
-  
+    function InsertData(position) {
+        for(var i in Object.values(key)) {
         for(var j = 0; j < Object.values(key[j]).length; j++) {
-        dataDiv = document.createElement('div');
-        document.getElementById('left').appendChild(dataDiv);
-        dataDiv.className = 'data';
-        dataDiv.textContent = Object.values(key[i])[j];
+            dataDiv = document.createElement('div');
+            document.getElementById(position).appendChild(dataDiv);
+            dataDiv.className = 'data';
+            dataDiv.textContent = Object.values(key[i])[j];
+        }
     }
 }
 
-// right
-for(var i in Object.keys(key[0])) {
-    dataDiv = document.createElement('div');
-    document.getElementById('right').appendChild(dataDiv);
-    dataDiv.className = 'data';
-    dataDiv.textContent = Object.keys(key[0])[i];
-}
+    // left
+    createList('left');
+    InsertData('left');
 
-for(var i in Object.values(key)) {
-
-    for(var j = 0; j < Object.values(key[j]).length; j++) {
-    dataDiv = document.createElement('div');
-    document.getElementById('right').appendChild(dataDiv);
-    dataDiv.className = 'data';
-    dataDiv.textContent = Object.values(key[i])[j];
-}
-}
+    // right
+    createList('right');
+    InsertData('right');
