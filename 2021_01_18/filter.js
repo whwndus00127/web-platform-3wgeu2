@@ -1,4 +1,4 @@
-var table = document.getElementById('table');
+var table = document.querySelector('#table');
 
 var key = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -23,8 +23,8 @@ var key = [
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19}];
 
 
-    var tr = document.getElementById('tr');
-    document.getElementById('value').addEventListener
+    var tr = document.querySelector('#tr');
+    document.querySelector('#value').addEventListener
     ('keyup', function() {
         while (tr.firstChild) {
             tr.removeChild(tr.firstChild);
