@@ -19,19 +19,22 @@
 
             .row {
                 display: table;
-                column-width: 90px;
+            }
+
+            .title_row {
+                display: table;
             }
 
             .data {
                 display: table-cell;
-                column-width: 90px;
+                column-width: 120px;
                 padding: 10px;
                 border-bottom: 1px solid black;
                 font-size: 10px;
             }
 
             .data:first-child {
-                column-width: 30px;
+                column-width: 20px;
             }
 
             .data:last-child {
@@ -40,6 +43,14 @@
 
             .data:nth-child(5) {
                 column-width: 50px;
+            }
+
+            .data:nth-child(4) {
+                column-width: 50px;
+            }
+
+            .data:nth-child(3) {
+                column-width: 90px;
             }
 
             .row:hover {
@@ -56,6 +67,16 @@
         </style>
 
         <body>
+            <div>검색 : <input onkeyup="filter()" type="text" id="value" placeholder="Search">
+            <select name="" id="select">
+                <option value="op">option</option>
+                <option value="0">rank</option>
+                <option value="1">company</option>
+                <option value="2">revenues</option>
+                <option value="3">profits</option>
+                <option value="4">pq_index</option>
+                <option value="5">pq_order</option>
+            </select></div>
             <div id='left'></div>
             <div id='right'></div>
             <script src="ranking.js"></script>

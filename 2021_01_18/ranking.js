@@ -1,4 +1,5 @@
 let dataDiv, rowDiv;
+var list = document.getElementById("select"); // 검색 옵션 리스트
 
 var key = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -25,7 +26,7 @@ var key = [
     //function
     function createList(position) {
         rowDiv = document.createElement('div');
-        rowDiv.className = 'row';
+        rowDiv.className = 'title_row';
         for(var i in Object.keys(key[0])) {
         dataDiv = document.createElement('div');
         document.getElementById(position).appendChild(rowDiv);
@@ -34,7 +35,6 @@ var key = [
         dataDiv.textContent = Object.keys(key[0])[i];
         }
     }
-
 
     function InsertData(position) {
         for(var i in Object.values(key)) {
@@ -49,7 +49,22 @@ var key = [
         }
     }
 }
+    // 검색 함수
+    function filter() {
+        var value, data, row, i;
 
+        value = document.getElementById("value").value.toUpperCase(); // 대소문자 구분을 없애기위한
+        row = document.getElementsByClassName("row");
+
+        for(i=0; i < row.length; i++) {
+            data = row[i].getElementsByClassName("data"); // data 셀에 들어있는 값을 변수 data에 대입
+            if(data[list.options[list.selectedIndex].value].textContent.toUpperCase().indexOf(value) > -1){ // 검색 옵션의 값에 따라 검색하기
+                row[i].style.display = "table"; // 검색 결과
+            } else {
+                row[i].style.display = "none"; // 결과를 제외한 요소 삭제
+            }
+    }
+}
     // left
     createList('left');
     InsertData('left');
