@@ -1,5 +1,6 @@
 let dataDiv, rowDiv;
-var list = document.getElementById("select"); // 검색 옵션 리스트
+var list = document.querySelector("#select"); // 검색 옵션 리스트
+var rightDiv = document.getElementById('right');
 
 var key = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -22,6 +23,28 @@ var key = [
     { rank: 18, company: "AXA", revenues: 112351.4, profits: 4896.3, pq_index:17, pq_order:17},
     { rank: 19, company: "Crédit Agricole", revenues: 110764.6, profits: 7434.3, pq_index:18, pq_order:18},
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19}];
+
+    /*var ul = document.getElementById('list');
+    document.getElementById('value2').addEventListener
+    ('keyup', function() {
+        while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+        }
+
+        var find = this.value;
+        find = find.toUpperCase();
+
+        var search2 = key.filter(function(x){
+            return x.company.toUpperCase().includes(find)
+        });
+
+        search2.forEach(function(x) {
+           var li = document.createElement('li');
+            li.innerHTML = x.company;
+
+            ul.appendChild(li);
+        });
+    });*/
 
     //function
     function createList(position) {
@@ -50,14 +73,14 @@ var key = [
     }
 }
     // 검색 함수
-    function filter() {
+    function search() {
         var value, data, row, i;
 
-        value = document.getElementById("value").value.toUpperCase(); // 대소문자 구분을 없애기위한
-        row = document.getElementsByClassName("row");
+        value = document.querySelector("#value").value.toUpperCase(); // 대소문자 구분을 없애기위한
+        row = document.querySelectorAll(".row");
 
         for(i=0; i < row.length; i++) {
-            data = row[i].getElementsByClassName("data"); // data 셀에 들어있는 값을 변수 data에 대입
+            data = row[i].querySelectorAll(".data"); // data 셀에 들어있는 값을 변수 data에 대입
             if(data[list.options[list.selectedIndex].value].textContent.toUpperCase().indexOf(value) > -1){ // 검색 옵션의 값에 따라 검색하기
                 row[i].style.display = "table"; // 검색 결과
             } else {
@@ -65,6 +88,9 @@ var key = [
             }
     }
 }
+
+
+
     // left
     createList('left');
     InsertData('left');

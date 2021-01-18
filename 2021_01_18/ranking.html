@@ -78,7 +78,7 @@
         </style>
 
         <body>
-            <div>검색 : <input onkeyup="filter()" type="text" id="value" placeholder="Search">
+            <div>검색 : <input onkeyup="search()" type="text" id="value" placeholder="Search">
             <select name="" id="select">
                 <option value="0">rank</option>
                 <option value="1">company</option>
@@ -87,8 +87,13 @@
                 <option value="4">pq_index</option>
                 <option value="5">pq_order</option>
             </select></div>
+
+            <div>검색 : <input type="text" id="value2" placeholder="Search">
+            <ul id="list"></ui>
             <div id='left'></div>
-            <div id='right'></div>
+            <div id='right'>
+                <ul id="list"></ui>
+            </div>
             <script src="ranking.js"></script>
         </body>
     </head>
