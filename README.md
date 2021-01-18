@@ -72,5 +72,14 @@
  * 함수의 매개변수를 객체로 전달하는 실습
  
  * clearInterval을 이용하여 setInterval의 행동을 중단하는 기능 학습
+ 
+ ### 1월 18일
+ 
+ * Javascript 데이터 검색 기능 구현
+ 
+ * filter 메소드 학습
+ 
+ * getElementById와 querySelector의 차이 
+ 
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
