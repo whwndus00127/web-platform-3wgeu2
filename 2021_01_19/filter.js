@@ -25,15 +25,15 @@ var key = [
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
     { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
 
-    function createList(position, daTa) {
+    function createList(position) {
         rowDiv = document.createElement('div');
         rowDiv.className = 'title_row';
-        for(var i in Object.keys(daTa[0])) {
+        for(var i in Object.keys(key[0])) {
         dataDiv = document.createElement('div');
         document.getElementById(position).appendChild(rowDiv);
         rowDiv.appendChild(dataDiv);
         dataDiv.className = 'data';
-        dataDiv.textContent = Object.keys(daTa[0])[i];
+        dataDiv.textContent = Object.keys(key[0])[i];
         }
     }
 
@@ -81,7 +81,7 @@ var key = [
         if(value.length > 0) {
         document.body.appendChild(leftDiv);
         leftDiv.className='left';
-        createList('left', data);
+        createList('left');
         InsertData('left', data);
     } else {
         reset();
@@ -93,9 +93,9 @@ var key = [
         {
             leftDiv.removeChild(leftDiv.firstChild);
         }
-        createList('left', key);
+        createList('left');
         InsertData('left', key);
     }
 
-    createList('left', key);
+    createList('left');
     InsertData('left', key);
