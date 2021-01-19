@@ -1,5 +1,3 @@
-var table = document.querySelector('#table');
-var leftDiv = document.querySelector('#left');
 var value = document.querySelector('#value');
 var bodyDiv = document.querySelector("#body");
 var headDiv = document.querySelector("#head");
