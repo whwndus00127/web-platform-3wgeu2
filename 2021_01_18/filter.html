@@ -5,21 +5,83 @@
 
         <style>
 
-            tr > td {
-                border: 1px solid black;
-                display: table;
-                width: 500px;
+#value {
+                padding: 5px;
             }
 
+            #select {
+                padding: 5px;
+            }
+
+            #select:hover {
+                background-color: whitesmoke;
+            }
+            
+            #left {
+                float: left;
+                padding: 10px;
+            }
+
+            #right {
+                float: left;
+                padding: 10px;
+
+            }
+
+            .row {
+                display: table;
+            }
+
+            .title_row {
+                display: table;
+            }
+
+            .data {
+                display: table-cell;
+                column-width: 120px;
+                padding: 10px;
+                border-bottom: 1px solid black;
+                font-size: 10px;
+            }
+
+            .data:first-child {
+                column-width: 20px;
+            }
+
+            .data:last-child {
+                column-width: 60px;
+            }
+
+            .data:nth-child(5) {
+                column-width: 50px;
+            }
+
+            .data:nth-child(4) {
+                column-width: 50px;
+            }
+
+            .data:nth-child(3) {
+                column-width: 90px;
+            }
+
+            .row:hover {
+                background-color: whitesmoke;
+            }
+
+            .data {
+                float: left;
+                font-size: 12px;
+                border-bottom: 1px solid black;
+                padding: 10px;
+            }
         </style>
 
         <body>
             <div>검색 : <input type="text" id="value" placeholder="Search">
-            </div>
-            <table id="table">
-                <tr id="tr">
-                </tr>
-            </table>
+            <button id="click" onclick="search()">search</button>
+            <button id="click" onclick="reset()">reset</button></div>
+            <div id='left'></div>
+            <div id='right'></div>
             <script src="filter.js"></script>
         </body>
     </head>

@@ -72,6 +72,7 @@ var key = [
         }
     }
 }
+
     // 검색 함수
     function search() {
         var value, data, row, i;
@@ -80,7 +81,8 @@ var key = [
         row = document.querySelectorAll(".row");
 
         for(i=0; i < row.length; i++) {
-            data = row[i].querySelectorAll(".data"); // data 셀에 들어있는 값을 변수 data에 대입
+            data = row[i].querySelectorAll(".data");
+            // data 셀에 들어있는 값을 변수 data에 대입
             if(data[list.options[list.selectedIndex].value].textContent.toUpperCase().indexOf(value) > -1){ // 검색 옵션의 값에 따라 검색하기
                 row[i].style.display = "table"; // 검색 결과
             } else {

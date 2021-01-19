@@ -1,4 +1,7 @@
 var table = document.querySelector('#table');
+var rightDiv = document.querySelector('#right');
+var value = document.getElementById('value');
+var button = document.querySelector("#click");
 
 var key = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -22,31 +25,76 @@ var key = [
     { rank: 19, company: "Crédit Agricole", revenues: 110764.6, profits: 7434.3, pq_index:18, pq_order:18},
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19}];
 
-
-    var tr = document.querySelector('#tr');
-    document.querySelector('#value').addEventListener
-    ('keyup', function() {
-        while (tr.firstChild) {
-            tr.removeChild(tr.firstChild);
+    function createList(position) {
+        rowDiv = document.createElement('div');
+        rowDiv.className = 'title_row';
+        for(var i in Object.keys(key[0])) {
+        dataDiv = document.createElement('div');
+        document.getElementById(position).appendChild(rowDiv);
+        rowDiv.appendChild(dataDiv);
+        dataDiv.className = 'data';
+        dataDiv.textContent = Object.keys(key[0])[i];
         }
+    }
 
-        var find = this.value;
-        find = find.toUpperCase();
+    function InsertData(position) {
+        for(var i in Object.values(key)) {
+        rowDiv = document.createElement('div');
+        rowDiv.className = 'row';
+        for(var j = 0; j < Object.values(key[j]).length; j++) {
+            dataDiv = document.createElement('div');
+            document.getElementById(position).appendChild(rowDiv);
+            rowDiv.appendChild(dataDiv);
+            dataDiv.className = 'data';
+            dataDiv.textContent = Object.values(key[i])[j];
+        }
+    }
+}
 
-        var search = key.filter(function(x){
-            return (x.rank.toString().indexOf(find) == 0 ||
-                x.company.toUpperCase().includes(find) ||
-                x.revenues.toString().indexOf(find) == 0 ||
-                x.profits.toString().indexOf(find) == 0 ||
-                x.pq_index.toString().indexOf(find) == 0 ||
-                x.pq_order.toString().indexOf(find) == 0
-            );
-        });
+    // 검색 함수
+    function search() {
+        var value, data = [], right;
+        right = document.querySelector("#right");
+        value = document.querySelector("#value").value.toUpperCase(); // 대소문자 구분을 없애기위한
+        row = document.querySelectorAll(".row");
 
-        search.forEach(function(x) {
-           var td = document.createElement('td');
-           table.appendChild(tr);
-           tr.appendChild(td);
-            td.innerHTML = x.rank + "-----" + x.company + "-----" + x.revenues + "-----" + x.profits + "-----"+ x.pq_index + "-----" + x.pq_order;
-        });
-    });
+        function filterName(value){
+            return key.filter(function(x){
+                return x.rank.toString().includes(value) ||
+                x.company.includes(value) ||
+                x.revenues.toString().includes(value) ||
+                x.profits.toString().includes(value) ||
+                x.pq_index.toString().includes(value) ||
+                x.pq_order.toString().includes(value)
+            });
+        }
+        console.log(filterName(value));
+        data = filterName(value);
+
+        console.log(data);
+
+        if(value.length > 0) {
+        document.body.appendChild(rightDiv);
+        rightDiv.className='right';
+        for(var i in Object.values(data)) {
+            rowDiv = document.createElement('div');
+            rowDiv.className = 'row';
+            for(var j = 0; j < Object.values(data[i]).length; j++) {
+                dataDiv = document.createElement('div');
+                rightDiv.appendChild(rowDiv);
+                rowDiv.appendChild(dataDiv);
+                dataDiv.className = 'data';
+                dataDiv.textContent = Object.values(data[i])[j];
+            }
+        } 
+    }
+}
+    function reset() {
+    while (rightDiv.hasChildNodes())
+        {
+            rightDiv.removeChild(right.firstChild);
+        }
+    }
+
+    createList('left');
+    InsertData('left');
