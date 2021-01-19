@@ -1,7 +1,6 @@
 var table = document.querySelector('#table');
-var rightDiv = document.querySelector('#right');
-var value = document.getElementById('value');
-var button = document.querySelector("#click");
+var leftDiv = document.querySelector('#left');
+var value = document.querySelector('#value');
 
 var key = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -23,30 +22,31 @@ var key = [
     { rank: 17, company: "Volkswagen", revenues: 118376.6, profits: 1391.7, pq_index:16, pq_order:16},
     { rank: 18, company: "AXA", revenues: 112351.4, profits: 4896.3, pq_index:17, pq_order:17},
     { rank: 19, company: "Crédit Agricole", revenues: 110764.6, profits: 7434.3, pq_index:18, pq_order:18},
-    { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19}];
+    { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
+    { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
 
-    function createList(position) {
+    function createList(position, daTa) {
         rowDiv = document.createElement('div');
         rowDiv.className = 'title_row';
-        for(var i in Object.keys(key[0])) {
+        for(var i in Object.keys(daTa[0])) {
         dataDiv = document.createElement('div');
         document.getElementById(position).appendChild(rowDiv);
         rowDiv.appendChild(dataDiv);
         dataDiv.className = 'data';
-        dataDiv.textContent = Object.keys(key[0])[i];
+        dataDiv.textContent = Object.keys(daTa[0])[i];
         }
     }
 
-    function InsertData(position) {
-        for(var i in Object.values(key)) {
+    function InsertData(position, daTa) {
+        for(var i in Object.values(daTa)) {
         rowDiv = document.createElement('div');
         rowDiv.className = 'row';
-        for(var j = 0; j < Object.values(key[j]).length; j++) {
+        for(var j = 0; j < Object.values(daTa[i]).length; j++) {
             dataDiv = document.createElement('div');
             document.getElementById(position).appendChild(rowDiv);
             rowDiv.appendChild(dataDiv);
             dataDiv.className = 'data';
-            dataDiv.textContent = Object.values(key[i])[j];
+            dataDiv.textContent = Object.values(daTa[i])[j];
         }
     }
 }
@@ -54,7 +54,11 @@ var key = [
     // 검색 함수
     function search() {
         reset();
-        var value, data = [], right;
+        while (leftDiv.hasChildNodes())
+        {
+            leftDiv.removeChild(leftDiv.firstChild);
+        }
+        var value, data = [];
         right = document.querySelector("#right");
         value = document.querySelector("#value").value.toLowerCase(); // 대소문자 구분을 없애기위한
         row = document.querySelectorAll(".row");
@@ -70,32 +74,28 @@ var key = [
             });
         }
         console.log(filterName(value));
-        data = filterName(value);
+        data = filterName(value); // 걸러진 값 data에 저장
 
         console.log(data);
-
+        // 검색하려는 값이 있을때
         if(value.length > 0) {
-        document.body.appendChild(rightDiv);
-        rightDiv.className='right';
-        for(var i in Object.values(data)) {
-            rowDiv = document.createElement('div');
-            rowDiv.className = 'row';
-            for(var j = 0; j < Object.values(data[i]).length; j++) {
-                dataDiv = document.createElement('div');
-                rightDiv.appendChild(rowDiv);
-                rowDiv.appendChild(dataDiv);
-                dataDiv.className = 'data';
-                dataDiv.textContent = Object.values(data[i])[j];
-            }
-        } 
+        document.body.appendChild(leftDiv);
+        leftDiv.className='left';
+        createList('left', data);
+        InsertData('left', data);
+    } else {
+        reset();
     }
 }
+    // 검색하는 값이 없을때 초기 데이터를 보여주는 함수
     function reset() {
-    while (rightDiv.hasChildNodes())
+    while (leftDiv.hasChildNodes())
         {
-            rightDiv.removeChild(right.firstChild);
+            leftDiv.removeChild(leftDiv.firstChild);
         }
+        createList('left', key);
+        InsertData('left', key);
     }
 
-    createList('left');
-    InsertData('left');
+    createList('left', key);
+    InsertData('left', key);
