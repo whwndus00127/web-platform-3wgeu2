@@ -87,5 +87,9 @@
  
  * filter 메소드를 이용하여 검색 기능 구현 
  
+ * checkbox, radiobox 등 체크 요소 학습
+ 
+ * window.onload에 대해 
+ 
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
