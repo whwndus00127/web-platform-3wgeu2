@@ -1,3 +1,4 @@
+
 var value = document.querySelector('#value');
 var bodyDiv = document.querySelector("#body");
 var headDiv = document.querySelector("#head");
@@ -27,12 +28,6 @@ var key = [
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
     { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
 
-    // pq_ 속성 삭제
-    for(i = 0; i < Object.keys(key).length; i++){
-    delete key[i].pq_index;
-    delete key[i].pq_order;
-    }
-    
     function createList(position, daTa) {
         titleRow = document.createElement('div');
         titleRow.className = 'title_row';
@@ -58,25 +53,10 @@ var key = [
         }
     }
 }
-    // 둘중 하나만 체크 가능 및 체크 해제 시 텍스트 비활성화 함수
-    function check_only(chk) {
-        if(include.checked == false && absolute.checked == false){
-            value.disabled = true;
-            value.placeholder='Select option ------------>'
-        } else {
-            value.disabled = false;
-            value.placeholder='Search'
-        }
-        var obj = document.getElementsByName("option");
-        for(var i = 0; i < obj.length; i++) {
-            if(obj[i] != chk) {
-                obj[i].checked = false;
-            }
-        }
-    }
 
     // 검색 함수
     function search() {
+        
         while (bodyDiv.hasChildNodes())
         {
             bodyDiv.removeChild(bodyDiv.firstChild);
@@ -86,26 +66,23 @@ var key = [
         value = document.querySelector("#value").value.toLowerCase(); // 대소문자 구분을 없애기위한
         row = document.querySelectorAll(".row");
 
-        // 포함일치 체크 시
-        if(include.checked == true) {
-        function filterName(value){
-            return key.filter(function(x){
-                return x.rank.toString().includes(value) ||
-                x.company.toLowerCase().includes(value) ||
-                x.revenues.toString().includes(value) ||
-                x.profits.toString().includes(value)
-            });
-        }
-    } else { // 완전일치 체크 시
-        function filterName(value){
-            return key.filter(function(x){
+    // 필터함수
+    function filterName(value){
+        return key.filter(function(x){
+            if(include.checked == true) { // 포함 검색
+            return x.rank.toString().includes(value) ||
+            x.company.toLowerCase().includes(value) ||
+            x.revenues.toString().includes(value) ||
+            x.profits.toString().includes(value)
+            } else { // 완전 일치
             return x.rank.toString() === value ||
             x.company.toLowerCase() === value ||
             x.revenues.toString() === value ||
             x.profits.toString() === value
+            }
         });
     }
-}
+
         data = filterName(value); // 걸러진 값 data에 저장
         console.log(data);
         
@@ -124,6 +101,7 @@ var key = [
         }
         InsertData('body', key);
     }
-
+    window.onload = function() {
     createList('head', key);
     InsertData('body', key);
+}
