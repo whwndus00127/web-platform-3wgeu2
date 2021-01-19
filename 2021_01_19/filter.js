@@ -1,6 +1,8 @@
 var table = document.querySelector('#table');
 var leftDiv = document.querySelector('#left');
 var value = document.querySelector('#value');
+var bodyDiv = document.querySelector("#body");
+var headDiv = document.querySelector("#head");
 
 var key = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -53,9 +55,9 @@ var key = [
 
     // 검색 함수
     function search() {
-        while (leftDiv.hasChildNodes())
+        while (bodyDiv.hasChildNodes())
         {
-            leftDiv.removeChild(leftDiv.firstChild);
+            bodyDiv.removeChild(bodyDiv.firstChild);
         }
         var value, data = [];
         right = document.querySelector("#right");
@@ -77,23 +79,19 @@ var key = [
         
         // 검색하려는 값이 있을때
         if(value.length > 0) {
-        document.body.appendChild(leftDiv);
-        leftDiv.className='left';
-        createList('left', key);
-        InsertData('left', data);
+        InsertData('body', data);
     } else {
         reset();
     }
 }
     // 검색하는 값이 없을때 초기 데이터를 보여주는 함수
     function reset() {
-    while (rowDiv.hasChildNodes())
+    while (bodyDiv.hasChildNodes())
         {
-            rowDiv.removeChild(rowDiv.firstChild);
+            bodyDiv.removeChild(bodyDiv.firstChild);
         }
-        createList('left', key);
-        InsertData('left', key);
+        InsertData('body', key);
     }
 
-    createList('left', key);
-    InsertData('left', key);
+    createList('head', key);
+    InsertData('body', key);
