@@ -25,15 +25,15 @@ var key = [
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
     { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
 
-    function createList(position) {
-        rowDiv = document.createElement('div');
-        rowDiv.className = 'title_row';
-        for(var i in Object.keys(key[0])) {
+    function createList(position, daTa) {
+        titleRow = document.createElement('div');
+        titleRow.className = 'title_row';
+        for(var i in Object.keys(daTa[0])) {
         dataDiv = document.createElement('div');
-        document.getElementById(position).appendChild(rowDiv);
-        rowDiv.appendChild(dataDiv);
+        document.getElementById(position).appendChild(titleRow);
+        titleRow.appendChild(dataDiv);
         dataDiv.className = 'data';
-        dataDiv.textContent = Object.keys(key[0])[i];
+        dataDiv.textContent = Object.keys(daTa[0])[i];
         }
     }
 
@@ -53,7 +53,6 @@ var key = [
 
     // 검색 함수
     function search() {
-        reset();
         while (leftDiv.hasChildNodes())
         {
             leftDiv.removeChild(leftDiv.firstChild);
@@ -73,15 +72,14 @@ var key = [
                 x.pq_order.toString().includes(value)
             });
         }
-        console.log(filterName(value));
         data = filterName(value); // 걸러진 값 data에 저장
-
         console.log(data);
+        
         // 검색하려는 값이 있을때
         if(value.length > 0) {
         document.body.appendChild(leftDiv);
         leftDiv.className='left';
-        createList('left');
+        createList('left', key);
         InsertData('left', data);
     } else {
         reset();
@@ -89,13 +87,13 @@ var key = [
 }
     // 검색하는 값이 없을때 초기 데이터를 보여주는 함수
     function reset() {
-    while (leftDiv.hasChildNodes())
+    while (rowDiv.hasChildNodes())
         {
-            leftDiv.removeChild(leftDiv.firstChild);
+            rowDiv.removeChild(rowDiv.firstChild);
         }
-        createList('left');
+        createList('left', key);
         InsertData('left', key);
     }
 
-    createList('left');
+    createList('left', key);
     InsertData('left', key);
