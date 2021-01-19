@@ -81,5 +81,11 @@
  
  * getElementById와 querySelector의 차이 
  
+  ### 1월 19일
+ 
+ * querySelector / All 사용하여 프로젝트 구현
+ 
+ * filter 메소드를 이용하여 검색 기능 구현 
+ 
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
