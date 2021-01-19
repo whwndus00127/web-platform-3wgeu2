@@ -53,15 +53,16 @@ var key = [
 
     // 검색 함수
     function search() {
+        reset();
         var value, data = [], right;
         right = document.querySelector("#right");
-        value = document.querySelector("#value").value.toUpperCase(); // 대소문자 구분을 없애기위한
+        value = document.querySelector("#value").value.toLowerCase(); // 대소문자 구분을 없애기위한
         row = document.querySelectorAll(".row");
 
         function filterName(value){
             return key.filter(function(x){
                 return x.rank.toString().includes(value) ||
-                x.company.includes(value) ||
+                x.company.toLowerCase().includes(value) ||
                 x.revenues.toString().includes(value) ||
                 x.profits.toString().includes(value) ||
                 x.pq_index.toString().includes(value) ||
