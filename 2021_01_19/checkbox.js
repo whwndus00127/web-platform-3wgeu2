@@ -69,7 +69,7 @@ var key = [
     // 필터함수
     function filterName(value){
         return key.filter(function(x){
-            if(include.checked == true) { // 포함 검색
+            if(include.checked == true) { // 포함 검색 //
             return x.rank.toString().includes(value) ||
             x.company.toLowerCase().includes(value) ||
             x.revenues.toString().includes(value) ||
