@@ -1,7 +1,7 @@
 window.onload = function() {
 
-    createList('head', copiedKey);
-    InsertData('body', copiedKey);
+    createList('head', result);
+    InsertData('body', result);
 }
 
 var value = document.querySelector('#value');
@@ -33,14 +33,15 @@ var key = [
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
     { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
 
-    var copiedKey = Object.assign([], key);
+    //var copiedKey = Object.assign([], key);
     
 
-    const filtered = copiedKey.filter(copiedKey => delete copiedKey.pq_index &&
-        delete copiedKey.pq_order)
+    //const filtered = copiedKey.filter(copiedKey => delete copiedKey.pq_index &&
+        //delete copiedKey.pq_order)
 
-        var result = copiedKey.map 
-        (obj => {return {rank : obj.rank, company : obj.company}})
+        // key 객체의 일부를 result에 저장
+        var result = key.map 
+        (obj => {return {rank : obj.rank, company : obj.company, revenues : obj.revenues, profits : obj.profits}})
 
     function createList(position, daTa) {
         titleRow = document.createElement('div');
@@ -83,7 +84,7 @@ var key = [
 
     // 필터함수
     function filterName(value){
-        return copiedKey.filter(function(x){
+        return result.filter(function(x){
             if(include.checked == true) { // 포함 검색 //
             return x.rank.toString().includes(value) ||
             x.company.toLowerCase().includes(value) ||
@@ -113,7 +114,7 @@ var key = [
         {
             bodyDiv.removeChild(bodyDiv.firstChild);
         }
-        InsertData('body', key);
+        InsertData('body', result);
     }
 
 
