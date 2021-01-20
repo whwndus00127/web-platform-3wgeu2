@@ -1,6 +1,7 @@
 window.onload = function() {
-createList('head', key);
-InsertData('body', key);
+
+    createList('head', copiedKey);
+    InsertData('body', copiedKey);
 }
 
 var value = document.querySelector('#value');
@@ -32,17 +33,16 @@ var key = [
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
     { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
 
-    /*function deleteKey() {
-        for(i = 0; i < Object.keys(key).length; i++) {
-            delete key[i].pq_index;
-            delete key[i].pq_order;
-        }
-    }*/
+    var copiedKey = Object.assign([], key);
     
+
+    const filtered = copiedKey.filter(copiedKey => delete copiedKey.pq_index &&
+        delete copiedKey.pq_order)
+
     function createList(position, daTa) {
         titleRow = document.createElement('div');
         titleRow.className = 'title_row';
-        for(var i = 0; i <= (Object.keys(daTa[i])).indexOf('profits'); i++) { // profits 까지만 보여줌
+        for(var i = 0; i < (Object.keys(daTa[i])).length; i++) { // profits 까지만 보여줌
         dataDiv = document.createElement('div');
         document.getElementById(position).appendChild(titleRow);
         titleRow.appendChild(dataDiv);
@@ -55,7 +55,7 @@ var key = [
         for(var i in Object.values(daTa)) {
         rowDiv = document.createElement('div');
         rowDiv.className = 'row';
-        for(var j = 0; j <= (Object.keys(daTa[i])).indexOf('profits'); j++) { // profits 까지만 보여줌
+        for(var j = 0; j < (Object.keys(daTa[i])).length; j++) { // profits 까지만 보여줌
             dataDiv = document.createElement('div');
             dataDiv = document.createElement('div');
             document.getElementById(position).appendChild(rowDiv);
@@ -65,6 +65,7 @@ var key = [
         }
     }
 }
+
 
     // 검색 함수
     function search() {
@@ -79,12 +80,12 @@ var key = [
 
     // 필터함수
     function filterName(value){
-        return key.filter(function(x){
+        return copiedKey.filter(function(x){
             if(include.checked == true) { // 포함 검색 //
             return x.rank.toString().includes(value) ||
             x.company.toLowerCase().includes(value) ||
             x.revenues.toString().includes(value) ||
-            x.profits.toString().includes(value)
+            x.profits.toString().includes(value) 
             } else { // 완전 일치
             return x.rank.toString() === value ||
             x.company.toLowerCase() === value ||
@@ -100,8 +101,7 @@ var key = [
         // 검색하려는 값이 있을때
         if(value.length > 0) {
         InsertData('body', data);
-    } else {
-        reset();
+    } else {reset();
     }
 }
     // 검색하는 값이 없을때 초기 데이터를 보여주는 함수
