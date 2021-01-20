@@ -39,9 +39,6 @@ var key = [
     const filtered = copiedKey.filter(copiedKey => delete copiedKey.pq_index &&
         delete copiedKey.pq_order)
 
-        var result = copiedKey.map 
-        (obj => {return {rank : obj.rank, company : obj.company}})
-
     function createList(position, daTa) {
         titleRow = document.createElement('div');
         titleRow.className = 'title_row';
