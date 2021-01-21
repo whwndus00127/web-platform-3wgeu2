@@ -92,7 +92,7 @@ var key = [
         row = document.querySelectorAll(".row");
 
     // Option 1
-    function filterName(value){
+    function option1(value){
         return result.filter(function(x){
             if(include.checked == true) { // 포함 검색 
             return x.rank.toString().includes(value) ||
@@ -109,10 +109,10 @@ var key = [
         });
     }
     // Option 1 결과 data에 대입
-    data = filterName(value);
+    data = option1(value);
 
         // Option 2를 체크했을 경우 Option 1을 거친 data로 조건문 수행
-        function filterTab(value) {
+        function option2(value) {
             return data.filter(function(x) {
                 // Option 1_포함검색
                 if(ra.checked == true && include.checked == true) {
@@ -141,12 +141,12 @@ var key = [
         
         // Option 1로만 검색할 경우
         if(value.length > 0 && ra.checked == false && co.checked == false && re.checked == false && pr.checked == false) {
-        data = filterName(value);
+        data = option1(value);
         InsertData('body', data);
     } 
     // Option 2를 통해서 검색할 경우
     else if (value.length > 0 && (ra.checked == true || co.checked == true || re.checked == true || pr.checked == true)) {
-        data = filterTab(value);
+        data = option2(value);
         InsertData('body', data);
     } else {reset(); // 입력값이 없을경우 초기데이터 출력
     }
