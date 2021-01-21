@@ -1,18 +1,18 @@
 window.onload = function() {
 
-    createList('head', result);
-    InsertData('body', result);
+    createList('table_Head', result);
+    InsertData('table_Body', result);
 }
 
 var value = document.querySelector('#value');
-var bodyDiv = document.querySelector("#body");
-var headDiv = document.querySelector("#head");
+var bodyDiv = document.querySelector("#table_Body");
+var headDiv = document.querySelector("#table_Head");
 var include = document.querySelector("#include");
 var absolute = document.querySelector("#absolute");
 var ra = document.querySelector("#ra"); var co = document.querySelector("#co"); var re = document.querySelector("#re"); var pr = document.querySelector("#pr");
 var btn_Reset = document.querySelector("#btn_Reset");
 
-var key = [
+var info = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
     { rank: 2, company: "Wal-Mart Stores", revenues: 315654.0, profits: 11231.0 , pq_index:1, pq_order:1},
     { rank: 3, company: "Royal Dutch Shell", revenues: 306731.0, profits: 25311.0, pq_index:2, pq_order:2},
@@ -35,15 +35,35 @@ var key = [
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
     { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
 
-    //var copiedKey = Object.assign([], key);
+    var test = { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0};
+
+    const newInfo = Object.keys(test).reduce((object, key) => {
+        if (!key.includes('pq')) {
+          object[key] = test[key]
+        }
+        return object
+      }, {});
+
+
+    //var copiedKey = Object.assign({}, info);
     
 
     //const filtered = copiedKey.filter(copiedKey => delete copiedKey.pq_index &&
         //delete copiedKey.pq_order)
 
         // key 객체의 일부를 result에 저장
-        var result = key.map 
-        (obj => {return {rank : obj.rank, company : obj.company, revenues : obj.revenues, profits : obj.profits}})
+        //var result = key.map 
+        //(obj => {return {rank : obj.rank}})
+
+        function headerFilter(data, Keys) {
+            return data.map((item) => {
+                const result = {};
+                Keys.forEach(key => result[key] = item[key]);
+                return result;
+            });
+        }
+
+        var result = headerFilter(info, Object.keys(newInfo));
 
     function createList(position, daTa) {
         titleRow = document.createElement('div');
@@ -116,13 +136,14 @@ var key = [
             return data.filter(function(x) {
                 // Option 1_포함검색
                 if(ra.checked == true && include.checked == true) {
-                    return x.rank.toString().includes(value)
+                    return x.rank.toString().includes(value);
                 } else if(co.checked == true && include.checked == true) {
                     return x.company.toLowerCase().includes(value)
                 } else if(re.checked == true && include.checked == true) {
                     return x.revenues.toString().includes(value)
                 } else if(pr.checked == true && include.checked == true) {
                     return x.profits.toString().includes(value)
+                
                     // Option 2_완전일치
                 } else if(ra.checked == true && absolute.checked == true) {
                     return x.rank.toString() === value 
@@ -132,7 +153,7 @@ var key = [
                     return x.revenues.toString() === value 
                 } else if(pr.checked == true && absolute.checked == true) {
                     return x.profits.toString() === value 
-                }
+                } 
             });
         }
 
@@ -142,12 +163,12 @@ var key = [
         // Option 1로만 검색할 경우
         if(value.length > 0 && ra.checked == false && co.checked == false && re.checked == false && pr.checked == false) {
         data = option1(value);
-        InsertData('body', data);
+        InsertData('table_Body', data);
     } 
     // Option 2를 통해서 검색할 경우
     else if (value.length > 0 && (ra.checked == true || co.checked == true || re.checked == true || pr.checked == true)) {
         data = option2(value);
-        InsertData('body', data);
+        InsertData('table_Body', data);
     } else {reset(); // 입력값이 없을경우 초기데이터 출력
     }
 }
@@ -157,7 +178,7 @@ var key = [
         {
             bodyDiv.removeChild(bodyDiv.firstChild);
         }
-        InsertData('body', result);
+        InsertData('table_Body', result);
     }
 
 
