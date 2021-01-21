@@ -91,5 +91,21 @@
  
  * window.onload에 대해 
  
+ ### 1월 20일
+ 
+ * map, forEach 실습
+ 
+ * window.onload 사용
+ 
+ * 객체를 지우는 delete 실습
+ 
+ ### 1월 21일
+ 
+ * map을 사용하여 테이블의 데이터 일부를 제외
+ 
+ * 테이블 검색 조건 추가 실습
+ 
+ 
+ 
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
