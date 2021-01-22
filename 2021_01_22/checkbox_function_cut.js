@@ -12,6 +12,7 @@ var absolute = document.querySelector("#absolute");
 var ra = document.querySelector("#ra"); var co = document.querySelector("#co"); var re = document.querySelector("#re"); var pr = document.querySelector("#pr");
 var btn_Reset = document.querySelector("#btn_Reset");
 var checkArr = new Array();
+checkArr.push('rank');
 
 var info = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -48,9 +49,14 @@ var info = [
       return obj
       })
         // 체크한 값을 배열로 넣어주는 함수
-        function makeFilter(target){
+        function makeFilter(target){ 
             var checkVal = target.value; 
             var confirmCheck = target.checked;
+            if(confirmCheck == false && checkArr.length == 1) {
+                checkArr.push('rank');
+                ra.checked = true;
+                alert("Option 2는 최소 조건이 1개 이상입니다.")
+            }
             if(confirmCheck == true){ 
                 checkArr.push(checkVal);
          }else{ 
@@ -92,7 +98,6 @@ var info = [
         if( (x > 8 && x < 48) || ( x > 90 && x < 146) ) {
             return;
         }
-
         while (bodyDiv.hasChildNodes())
         {
             bodyDiv.removeChild(bodyDiv.firstChild);
@@ -103,42 +108,23 @@ var info = [
         row = document.querySelectorAll(".row");
 
     // Option 1 (포함, 완전 옵션)
-    function option1(value){
+    function option1(value, chArr){
         let a = result.filter(function(obj){
             for(key in obj){
-                let all_Search = include.checked ? obj[key].toString().includes(value) : obj[key].toString() === value
-                let all_Search_String = include.checked && typeof(key) == 'string' ? obj[key].toString().toLowerCase().includes(value) : obj[key].toString().toLowerCase() === value
-                if(all_Search || all_Search_String) return true
+                for(var i = 0; i < chArr.length; i++) {
+                    let check_Data = obj[chArr[i]].toString().toLowerCase();
+                    let check_Search = include.checked ? check_Data.includes(value) : check_Data === value
+                    if(check_Search) return true
+                }
             }
             return false
         });
         return a
     }
-        //Option 2 (포함, 완전 옵션에 각 키값별로 검색 가능)
-        function option2(value, chArr) {
-            let a = result.filter(function(obj) {
-                    for(key in obj) {
-                        for(var i = 0; i < chArr.length; i++) {
-                            let a = obj[chArr[i]].toString().toLowerCase();
-                        let check_Search = include.checked ? a.includes(value) : a === value
-                        // let check_Search_String = include.checked && typeof(obj[checkArr[i]]) == 'string' ? obj[checkArr[i]].toString().toLowerCase().includes(value) : obj[checkArr[i]].toString().toLowerCase() === value
-                        if(check_Search) return true
-                    }
-                    return false
-                }
-            });
-            return a
-        }
     
         // 체크가 안되었을때는 option1 함수 적용
-        if(value.length > 0 && checkArr.length === 0) {
-        data = option1(value);
-        InsertData('table_Body', data);
-        console.log(data);
-    } 
-    // 체크가 하나라도 되어있으면 Option2 함수 적용
-    else if (value.length > 0 && checkArr.length > 0) {
-        data = option2(value, checkArr);
+        if(value.length > 0) {
+        data = option1(value, checkArr);
         InsertData('table_Body', data);
         console.log(data);
     } else {reset(); // 입력값이 없을경우 초기데이터 출력
