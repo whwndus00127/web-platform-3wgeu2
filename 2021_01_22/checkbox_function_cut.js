@@ -12,7 +12,7 @@ var absolute = document.querySelector("#absolute");
 var ra = document.querySelector("#ra"); var co = document.querySelector("#co"); var re = document.querySelector("#re"); var pr = document.querySelector("#pr");
 var btn_Reset = document.querySelector("#btn_Reset");
 var checkArr = new Array();
-checkArr.push('rank');
+checkArr.push('rank'); // 기본값
 
 var info = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -52,6 +52,7 @@ var info = [
         function makeFilter(target){ 
             var checkVal = target.value; 
             var confirmCheck = target.checked;
+            // 체크를 전부 해제 시 경고문 + 강제 체크
             if(confirmCheck == false && checkArr.length == 1) {
                 checkArr.push('rank');
                 ra.checked = true;
@@ -107,7 +108,7 @@ var info = [
         value = document.querySelector("#value").value.toLowerCase(); // 대소문자 구분을 없애기위한
         row = document.querySelectorAll(".row");
 
-    // Option 1 (포함, 완전 옵션)
+    // checkbox Option
     function option1(value, chArr){
         let a = result.filter(function(obj){
             for(key in obj){
