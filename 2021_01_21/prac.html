@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+
+        <input type="checkbox" id="age10" name="age" value="10" onchange="makeFilter(this);"/> <label for = "age10">10세</label> <input type="checkbox" id="age20" name="age" value="20" onchange="makeFilter(this);"/> <label for = "age20">20세</label> <input type="checkbox" id="age30" name="age" value="30" onchange="makeFilter(this);"/> <label for = "age30">30세</label> <input type="checkbox" id="age40" name="age" value="40" onchange="makeFilter(this);"/> <label for = "age40">40세</label> <input type="checkbox" id="age50" name="age" value="50" onchange="makeFilter(this);"/> <label for = "age50">50세</label> <input type="checkbox" id="age60" name="age" value="60" onchange="makeFilter(this);"/> <label for = "age60">60세</label>
+        
+        <script>
+
+var checkArr = new Array();
+var showFilterValue = document.getElementById("showFilter");
+
+function makeFilter(target){ 
+    var ageVal = target.value; 
+    var confirmCheck = target.checked;
+    console.log("필터 선택값 : "+ageVal); 
+    console.log("선택여부 : "+confirmCheck);
+    if(confirmCheck == true){ 
+        console.log("check"); 
+        checkArr.push(ageVal);
+ }else{ 
+     checkArr.splice(checkArr.indexOf(ageVal), 1);
+} 
+console.log("필터입력값 출력 : "+checkArr); 
+}
+
+
+        </script>
+
+    </body>
+</html>

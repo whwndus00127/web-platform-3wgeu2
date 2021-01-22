@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ranking</title>
+
+
+        <style>
+
+            #value {
+                padding: 5px;
+            }
+
+            #select {
+                padding: 5px;
+            }
+
+            #select:hover {
+                background-color: whitesmoke;
+            }
+            
+            #left {
+                float: left;
+                padding: 10px;
+            }
+
+            #right {
+                float: left;
+                padding: 10px;
+
+            }
+
+            .row {
+                display: table;
+            }
+
+            .title_row {
+                display: table;
+            }
+
+            .data {
+                display: table-cell;
+                column-width: 120px;
+                padding: 10px;
+                border-bottom: 1px solid black;
+                font-size: 10px;
+            }
+
+            .data:first-child {
+                column-width: 20px;
+            }
+
+            .data:last-child {
+                column-width: 60px;
+            }
+
+            .data:nth-child(5) {
+                column-width: 50px;
+            }
+
+            .data:nth-child(4) {
+                column-width: 50px;
+            }
+
+            .data:nth-child(3) {
+                column-width: 90px;
+            }
+
+            .row:hover {
+                background-color: whitesmoke;
+            }
+
+            .data {
+                float: left;
+                font-size: 12px;
+                border-bottom: 1px solid black;
+                padding: 10px;
+            }
+        </style>
+
+        <body>
+                <fieldset><legend>Option 1</legend>
+                <input type="radio" name="option1"  id="include" checked="true">포함검색
+                <input type="radio" name="option1"  id="absolute">완전일치
+                <fieldset><legend>Option 2</legend>
+                <input type="checkbox" name="option2"  id="ra"  value="rank" onchange="makeFilter(this)">rank
+                <input type="checkbox" name="option2"  id="co"  value="company" onchange="makeFilter(this)">company
+                <input type="checkbox" name="option2"  id="re" value="revenues" onchange="makeFilter(this)">revenues
+                <input type="checkbox" name="option2"  id="pr"  value="profits" onchange="makeFilter(this)">profits
+                &nbsp;&nbsp; 검색 : <input onkeyup="search(event)" type="text" id="value" placeholder="Search">
+            </fieldset></fieldset></div>
+            <div id='left'>
+                <div id="table_Head"></div>
+                <div id="table_Body"></div>
+            </div>
+            <script src="checkbox_test.js"></script></body>
+    </head>
+</html>

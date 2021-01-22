@@ -14,7 +14,7 @@ var btn_Reset = document.querySelector("#btn_Reset");
 
 var info = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
-    { rank: 2, company: "Wal-Mart Stores", revenues: 315654.0, profits: 11231.0 , pq_index:1, pq_order:1},
+    { rank: 2, company: "Wal-Mart Stores", revenues: 315654.0, profits: 11231.0, pq_index:1, pq_order:1},
     { rank: 3, company: "Royal Dutch Shell", revenues: 306731.0, profits: 25311.0, pq_index:2, pq_order:2},
     { rank: 4, company: "BP", revenues: 267600.0, profits: 22341.0, pq_index:3, pq_order:3},
     { rank: 5, company: "General Motors", revenues: 192604.0, profits: -10567.0, pq_index:4, pq_order:4 },
@@ -33,16 +33,29 @@ var info = [
     { rank: 18, company: "AXA", revenues: 112351.4, profits: 4896.3, pq_index:17, pq_order:17},
     { rank: 19, company: "Crédit Agricole", revenues: 110764.6, profits: 7434.3, pq_index:18, pq_order:18},
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
-    { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
+    { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}
+];
 
     var test = info[0];
 
-    const newInfo = Object.keys(test).reduce((object, key) => {
-        if (!key.includes('pq')) {
-          object[key] = test[key]
+
+    let copykey = info.map((obj) => {return Object.assign({}, obj)})
+
+     var result = copykey.map(obj => {
+       for(k in obj){
+         if(k.includes('pq_')){
+           delete obj[k]
+          }
         }
-        return object
-      }, {});
+      return obj
+      })
+
+    // const newInfo = Object.keys(test).reduce((object, key) => {
+    //     if (!key.includes('pq')) {
+    //       object[key] = test[key]
+    //     }
+    //     return object
+    //   }, {});
 
 
     //var copiedKey = Object.assign({}, info);
@@ -55,15 +68,15 @@ var info = [
         //var result = key.map 
         //(obj => {return {rank : obj.rank}})
 
-        function headerFilter(data, Keys) {
-            return data.map((item) => {
-                const result = {};
-                Keys.forEach(key => result[key] = item[key]);
-                return result;
-            });
-        }
+        // function headerFilter(data, Keys) {
+        //     return data.map((item) => {
+        //         const result = {};
+        //         Keys.forEach(key => result[key] = item[key]);
+        //         return result;
+        //     });
+        // }
 
-        var result = headerFilter(info, Object.keys(newInfo));
+        // var result = headerFilter(info, Object.keys(newInfo));
 
     function createList(position, daTa) {
         titleRow = document.createElement('div');
@@ -113,50 +126,43 @@ var info = [
 
     // Option 1
     function option1(value){
-        return result.filter(function(x){
-            if(include.checked == true) { // 포함 검색 
-            return x.rank.toString().includes(value) ||
-            x.company.toLowerCase().includes(value) ||
-            x.revenues.toString().includes(value) ||
-            x.profits.toString().includes(value) 
+        let a = result.filter(function(obj){
+            for(key in obj){
+                let bool = include.checked ? obj[key].toString().includes(value) : obj[key].toString() == value
+                let bool2 = include.checked && key === 'company' ? obj.company.toLowerCase().includes(value) : obj.company.toLowerCase() == value
+                if(bool || bool2) return true
+                //if(bool2) return true
             }
-            else if(absolute.checked == true) { // 완전 일치
-            return x.rank.toString() === value ||
-            x.company.toLowerCase() === value ||
-            x.revenues.toString() === value ||
-            x.profits.toString() === value
-            }
+            return false
+
+            // if(include.checked == true) { // 포함 검색 
+            // return obj.rank.toString().includes(value) ||
+            // obj.company.toLowerCase().includes(value) ||
+            // obj.revenues.toString().includes(value) ||
+            // obj.profits.toString().includes(value) 
+            // }
+            // else if(absolute.checked == true) { // 완전 일치
+            // return obj.rank.toString() === value ||
+            // obj.company.toLowerCase() === value ||
+            // obj.revenues.toString() === value ||
+            // obj.profits.toString() === value
+            
+            // }
         });
+        return a
     }
     // Option 1 결과 data에 대입
     data = option1(value);
 
         // Option 2를 체크했을 경우 Option 1을 거친 data로 조건문 수행
         function option2(value) {
-            return data.filter(function(x) {
-                // Option 1_포함검색
-                if(ra.checked == true && include.checked == true) {
-                    return x.rank.toString().includes(value);
-                } else if(co.checked == true && include.checked == true) {
-                    return x.company.toLowerCase().includes(value)
-                } else if(re.checked == true && include.checked == true) {
-                    return x.revenues.toString().includes(value)
-                } else if(pr.checked == true && include.checked == true) {
-                    return x.profits.toString().includes(value)
-                
-                    // Option 2_완전일치
-                } else if(ra.checked == true && absolute.checked == true) {
-                    return x.rank.toString() === value 
-                } else if(co.checked == true && absolute.checked == true) {
-                    return x.company.toLowerCase() === value 
-                } else if(re.checked == true && absolute.checked == true) {
-                    return x.revenues.toString() === value 
-                } else if(pr.checked == true && absolute.checked == true) {
-                    return x.profits.toString() === value 
-                } 
-            });
+            return data.filter(function() {
+                if(ra.checked == true) {
+                return data.find(x => x.rank.toString() === value)
+                }
+            })
         }
-
+        
         console.log(data);
         
         

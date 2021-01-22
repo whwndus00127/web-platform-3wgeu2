@@ -11,6 +11,7 @@ var include = document.querySelector("#include");
 var absolute = document.querySelector("#absolute");
 var ra = document.querySelector("#ra"); var co = document.querySelector("#co"); var re = document.querySelector("#re"); var pr = document.querySelector("#pr");
 var btn_Reset = document.querySelector("#btn_Reset");
+var checkArr = new Array();
 
 var info = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -33,42 +34,35 @@ var info = [
     { rank: 18, company: "AXA", revenues: 112351.4, profits: 4896.3, pq_index:17, pq_order:17},
     { rank: 19, company: "Crédit Agricole", revenues: 110764.6, profits: 7434.3, pq_index:18, pq_order:18},
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
-    { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
-
-    var test = info[0];
-
-    const newInfo = Object.keys(test).reduce((object, key) => {
-        if (!key.includes('pq')) {
-          object[key] = test[key]
+    { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}
+];
+    // 객체 복제
+    let copykey = info.map((obj) => {return Object.assign({}, obj)})
+    // 객체에서 특정한 데이터를 빼고 생성
+     var result = copykey.map(obj => {
+       for(k in obj){
+         if(k.includes('pq_')){
+           delete obj[k]
+          }
         }
-        return object
-      }, {});
-
-
-    //var copiedKey = Object.assign({}, info);
-    
-
-    //const filtered = copiedKey.filter(copiedKey => delete copiedKey.pq_index &&
-        //delete copiedKey.pq_order)
-
-        // key 객체의 일부를 result에 저장
-        //var result = key.map 
-        //(obj => {return {rank : obj.rank}})
-
-        function headerFilter(data, Keys) {
-            return data.map((item) => {
-                const result = {};
-                Keys.forEach(key => result[key] = item[key]);
-                return result;
-            });
+      return obj
+      })
+        // 체크한 값을 배열로 넣어주는 함수
+        function makeFilter(target){ 
+            var checkVal = target.value; 
+            var confirmCheck = target.checked;
+            if(confirmCheck == true){ 
+                checkArr.push(checkVal);
+         }else{ 
+             checkArr.splice(checkArr.indexOf(checkVal), 1);
+        } 
+        console.log("현재 검색필터 : "+checkArr); 
         }
-
-        var result = headerFilter(info, Object.keys(newInfo));
 
     function createList(position, daTa) {
         titleRow = document.createElement('div');
         titleRow.className = 'title_row';
-        for(var i = 0; i < (Object.keys(daTa[i])).length; i++) { // profits 까지만 보여줌
+        for(var i = 0; i < (Object.keys(daTa[i])).length; i++) {
         dataDiv = document.createElement('div');
         document.getElementById(position).appendChild(titleRow);
         titleRow.appendChild(dataDiv);
@@ -81,7 +75,7 @@ var info = [
         for(var i in Object.values(daTa)) {
         rowDiv = document.createElement('div');
         rowDiv.className = 'row';
-        for(var j = 0; j < (Object.keys(daTa[i])).length; j++) { // profits 까지만 보여줌
+        for(var j = 0; j < (Object.keys(daTa[i])).length; j++) {
             dataDiv = document.createElement('div');
             dataDiv = document.createElement('div');
             document.getElementById(position).appendChild(rowDiv);
@@ -91,17 +85,14 @@ var info = [
         }
     }
 }
-    // Option 2의 체크 상태를 전부 삭제
-    function option_Reset() {
-        ra.checked = false;
-        co.checked = false;
-        re.checked = false;
-        pr.checked = false;
-    }
-
-
     // 검색 함수
-    function search() {
+    function search(event) {
+        // 문자 숫자 외의 키 입력 시 함수 재시작
+        var x = event.keyCode;
+        if( (x > 8 && x < 48) || ( x > 90 && x < 146) ) {
+            return;
+        }
+
         while (bodyDiv.hasChildNodes())
         {
             bodyDiv.removeChild(bodyDiv.firstChild);
@@ -111,64 +102,44 @@ var info = [
         value = document.querySelector("#value").value.toLowerCase(); // 대소문자 구분을 없애기위한
         row = document.querySelectorAll(".row");
 
-    // Option 1
+    // Option 1 (포함, 완전 옵션)
     function option1(value){
-        return result.filter(function(x){
-            if(include.checked == true) { // 포함 검색 
-            return x.rank.toString().includes(value) ||
-            x.company.toLowerCase().includes(value) ||
-            x.revenues.toString().includes(value) ||
-            x.profits.toString().includes(value) 
+        let a = result.filter(function(obj){
+            for(key in obj){
+                let all_Search = include.checked ? obj[key].toString().includes(value) : obj[key].toString() === value
+                let all_Search_String = include.checked && typeof(key) == 'string' ? obj[key].toString().toLowerCase().includes(value) : obj[key].toString().toLowerCase() === value
+                if(all_Search || all_Search_String) return true
             }
-            else if(absolute.checked == true) { // 완전 일치
-            return x.rank.toString() === value ||
-            x.company.toLowerCase() === value ||
-            x.revenues.toString() === value ||
-            x.profits.toString() === value
-            }
+            return false
         });
+        return a
     }
-    // Option 1 결과 data에 대입
-    data = option1(value);
-
-        // Option 2를 체크했을 경우 Option 1을 거친 data로 조건문 수행
+        //Option 2 (포함, 완전 옵션에 각 키값별로 검색 가능)
         function option2(value) {
-            return data.filter(function(x) {
-                // Option 1_포함검색
-                if(ra.checked == true && include.checked == true) {
-                    return x.rank.toString().includes(value);
-                } else if(co.checked == true && include.checked == true) {
-                    return x.company.toLowerCase().includes(value)
-                } else if(re.checked == true && include.checked == true) {
-                    return x.revenues.toString().includes(value)
-                } else if(pr.checked == true && include.checked == true) {
-                    return x.profits.toString().includes(value)
-                
-                    // Option 2_완전일치
-                } else if(ra.checked == true && absolute.checked == true) {
-                    return x.rank.toString() === value 
-                } else if(co.checked == true && absolute.checked == true) {
-                    return x.company.toLowerCase() === value 
-                } else if(re.checked == true && absolute.checked == true) {
-                    return x.revenues.toString() === value 
-                } else if(pr.checked == true && absolute.checked == true) {
-                    return x.profits.toString() === value 
-                } 
+            let a = result.filter(function(obj) {
+                    for(key in obj) {
+                        for(var i = 0; i < checkArr.length; i++) {
+                        let check_Search = include.checked ? obj[checkArr[i]].toString().includes(value) : obj[checkArr[i]].toString() === value
+                        let check_Search_String = include.checked && typeof(checkArr[i]) == 'string' ? obj[checkArr[i]].toString().toLowerCase().includes(value) : obj[checkArr[i]].toString().toLowerCase() === value
+                        if(check_Search || check_Search_String) return true
+                    }
+                    return false
+                }
             });
+            return a
         }
-
-        console.log(data);
-        
-        
-        // Option 1로만 검색할 경우
-        if(value.length > 0 && ra.checked == false && co.checked == false && re.checked == false && pr.checked == false) {
+    
+        // 체크가 안되었을때는 option1 함수 적용
+        if(value.length > 0 && checkArr.length === 0) {
         data = option1(value);
         InsertData('table_Body', data);
+        console.log(data);
     } 
-    // Option 2를 통해서 검색할 경우
-    else if (value.length > 0 && (ra.checked == true || co.checked == true || re.checked == true || pr.checked == true)) {
+    // 체크가 하나라도 되어있으면 Option2 함수 적용
+    else if (value.length > 0 && checkArr.length > 0) {
         data = option2(value);
         InsertData('table_Body', data);
+        console.log(data);
     } else {reset(); // 입력값이 없을경우 초기데이터 출력
     }
 }
@@ -180,7 +151,3 @@ var info = [
         }
         InsertData('table_Body', result);
     }
-
-
-
-

@@ -33,16 +33,29 @@ var info = [
     { rank: 18, company: "AXA", revenues: 112351.4, profits: 4896.3, pq_index:17, pq_order:17},
     { rank: 19, company: "Crédit Agricole", revenues: 110764.6, profits: 7434.3, pq_index:18, pq_order:18},
     { rank: 20, company: "American Intl. Group", revenues: 108905.0, profits: 10477.0, pq_index:19, pq_order:19},
-    { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}];
+    { rank: 21, company: "KIA", revenues: 99456.2, profits: 5334.3, pq_index:20, pq_order:20}
+];
 
     var test = info[0];
 
-    const newInfo = Object.keys(test).reduce((object, key) => {
-        if (!key.includes('pq')) {
-          object[key] = test[key]
+
+    let copykey = info.map((obj) => {return Object.assign({}, obj)})
+
+     var result = copykey.map(obj => {
+       for(k in obj){
+         if(k.includes('pq_')){
+           delete obj[k]
+          }
         }
-        return object
-      }, {});
+      return obj
+      })
+
+    // const newInfo = Object.keys(test).reduce((object, key) => {
+    //     if (!key.includes('pq')) {
+    //       object[key] = test[key]
+    //     }
+    //     return object
+    //   }, {});
 
 
     //var copiedKey = Object.assign({}, info);
@@ -55,15 +68,15 @@ var info = [
         //var result = key.map 
         //(obj => {return {rank : obj.rank}})
 
-        function headerFilter(data, Keys) {
-            return data.map((item) => {
-                const result = {};
-                Keys.forEach(key => result[key] = item[key]);
-                return result;
-            });
-        }
+        // function headerFilter(data, Keys) {
+        //     return data.map((item) => {
+        //         const result = {};
+        //         Keys.forEach(key => result[key] = item[key]);
+        //         return result;
+        //     });
+        // }
 
-        var result = headerFilter(info, Object.keys(newInfo));
+        // var result = headerFilter(info, Object.keys(newInfo));
 
     function createList(position, daTa) {
         titleRow = document.createElement('div');
@@ -113,18 +126,9 @@ var info = [
 
     // Option 1
     function option1(value){
-        return result.filter(function(x){
-            if(include.checked == true) { // 포함 검색 
-            return x.rank.toString().includes(value) ||
-            x.company.toLowerCase().includes(value) ||
-            x.revenues.toString().includes(value) ||
-            x.profits.toString().includes(value) 
-            }
-            else if(absolute.checked == true) { // 완전 일치
-            return x.rank.toString() === value ||
-            x.company.toLowerCase() === value ||
-            x.revenues.toString() === value ||
-            x.profits.toString() === value
+        return result.filter(function(obj){
+            for(key in obj){
+                 return include.checked ? obj[key].toString().includes(value) : obj[key].toString() === value
             }
         });
     }
@@ -132,31 +136,14 @@ var info = [
     data = option1(value);
 
         // Option 2를 체크했을 경우 Option 1을 거친 data로 조건문 수행
-        function option2(value) {
-            return data.filter(function(x) {
-                // Option 1_포함검색
-                if(ra.checked == true && include.checked == true) {
-                    return x.rank.toString().includes(value);
-                } else if(co.checked == true && include.checked == true) {
-                    return x.company.toLowerCase().includes(value)
-                } else if(re.checked == true && include.checked == true) {
-                    return x.revenues.toString().includes(value)
-                } else if(pr.checked == true && include.checked == true) {
-                    return x.profits.toString().includes(value)
-                
-                    // Option 2_완전일치
-                } else if(ra.checked == true && absolute.checked == true) {
-                    return x.rank.toString() === value 
-                } else if(co.checked == true && absolute.checked == true) {
-                    return x.company.toLowerCase() === value 
-                } else if(re.checked == true && absolute.checked == true) {
-                    return x.revenues.toString() === value 
-                } else if(pr.checked == true && absolute.checked == true) {
-                    return x.profits.toString() === value 
-                } 
-            });
-        }
-
+        /*function option2(value) {
+            return data.filter(function() {
+                if(ra.checked == true) {
+                return data.find(x => x.rank.toString() === value)
+                }
+            })
+        }*/
+        
         console.log(data);
         
         
@@ -166,11 +153,11 @@ var info = [
         InsertData('table_Body', data);
     } 
     // Option 2를 통해서 검색할 경우
-    else if (value.length > 0 && (ra.checked == true || co.checked == true || re.checked == true || pr.checked == true)) {
+    /*else if (value.length > 0 && (ra.checked == true || co.checked == true || re.checked == true || pr.checked == true)) {
         data = option2(value);
         InsertData('table_Body', data);
     } else {reset(); // 입력값이 없을경우 초기데이터 출력
-    }
+    }*/
 }
     // 입력값이 없을때 초기 데이터를 보여주는 함수
     function reset() {
