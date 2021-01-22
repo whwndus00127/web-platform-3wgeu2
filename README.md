@@ -107,6 +107,12 @@
  
  * find 메소드 사용 실습
  
+ ### 1월 22일
  
-
+ * 테이블 검색 조건 [checkbox] 구현
+ 
+ * 변수의 유형을 확인할 수 있는 typeof 연산자 실습
+ 
+ * 체크된 값을 배열로 저장하는 기능 구현
+ 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
