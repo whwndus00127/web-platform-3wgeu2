@@ -1,7 +1,8 @@
 window.onload = function() {
-
     createList('table_Head', result);
     InsertData('table_Body', result);
+    check_Default.checked = true;
+    checkArr.push(check_Default.value);
 }
 
 var value = document.querySelector('#value');
@@ -9,10 +10,10 @@ var bodyDiv = document.querySelector("#table_Body");
 var headDiv = document.querySelector("#table_Head");
 var include = document.querySelector("#include");
 var absolute = document.querySelector("#absolute");
-var ra = document.querySelector("#ra"); var co = document.querySelector("#co"); var re = document.querySelector("#re"); var pr = document.querySelector("#pr");
+var op2_checkbox = document.querySelectorAll("input[type=checkbox][name=option2]");
 var btn_Reset = document.querySelector("#btn_Reset");
 var checkArr = new Array();
-checkArr.push('rank'); // 체크 기본값
+var check_Default = op2_checkbox[0]; // 체크박스의 기본값 지정
 
 var info = [
     { rank: 1, company: "Exxon Mobil", revenues: 339938.0, profits: 36130.0, pq_index:0, pq_order:0},
@@ -48,14 +49,16 @@ var info = [
         }
       return obj
       })
+
         // 체크한 값을 배열로 넣어주는 함수
-        function makeFilter(target){ 
-            var checkVal = target.value; 
-            var confirmCheck = target.checked;
+       op2_checkbox.forEach(function(checkbox) {
+           checkbox.addEventListener('change', function() {
+            var checkVal = checkbox.value; 
+            var confirmCheck = checkbox.checked;
             // 체크를 전부 해제 시 경고문 + 강제 체크
             if(confirmCheck == false && checkArr.length == 1) {
-                checkArr.push('rank');
-                ra.checked = true;
+                checkArr.push(check_Default.value);
+                check_Default.checked = true;
                 alert("Option 2는 최소 조건이 1개 이상입니다.")
             }
             if(confirmCheck == true){ 
@@ -64,8 +67,8 @@ var info = [
              checkArr.splice(checkArr.indexOf(checkVal), 1);
         } 
         console.log("현재 검색필터 : "+checkArr); 
-        }
-
+        });
+       })
     function createList(position, daTa) {
         titleRow = document.createElement('div');
         titleRow.className = 'title_row';
