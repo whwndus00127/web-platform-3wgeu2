@@ -115,4 +115,8 @@
  
  * 체크된 값을 배열로 저장하는 기능 구현
  
+ ### 1월 25일
+ 
+ * 
+ 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
