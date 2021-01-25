@@ -84,7 +84,7 @@ var key = [
             data = row[i].querySelectorAll(".data");
             // data 셀에 들어있는 값을 변수 data에 대입
             if(data[list.options[list.selectedIndex].value].textContent.toUpperCase().indexOf(value) > -1){ // 검색 옵션의 값에 따라 검색하기
-                row[i].style.display = "table"; // 검색 결과
+                row[i].style.display = "table";
             } else {
                 row[i].style.display = "none"; // 결과를 제외한 요소 삭제
             }
