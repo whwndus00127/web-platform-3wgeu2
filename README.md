@@ -117,6 +117,10 @@
  
  ### 1월 25일
  
- * 
+ * addEventListener 사용
+ 
+ * CSS의 display 속성을 사용하여 검색 기능 재구현
+ 
+ * 함수를 역할에 따라 세분화하는 작업 
  
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
