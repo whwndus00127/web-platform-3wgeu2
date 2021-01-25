@@ -1,8 +1,9 @@
+// onload 함수
 window.onload = function() {
-    createList('table_Head', result);
-    InsertData('table_Body', result);
-    check_Default.checked = true;
-    checkArr.push(check_Default.value);
+    createList('table_Head', result); // 테이블 헤드 생성
+    InsertData('table_Body', result); // 테이블 바디 생성
+    check_Default.checked = true; // 초기 체크 기본값 true
+    checkArr.push(check_Default.value); // 체크 기본값 체크 배열에 push
 }
 
 var value = document.querySelector('#value');
