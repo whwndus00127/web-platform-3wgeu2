@@ -127,6 +127,8 @@
  
  * find를 사용하여 조건문 → 반복문의 불필요한 로직 제거
  
- * find의 매개변수의 개념 및 역할 학
+ * find의 매개변수의 개념 및 역할 학습
+ 
+ * 같은 값을 가진 객체와 객체, 변수와 변수 간의 비교 차이점 학습
  
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
