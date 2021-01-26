@@ -251,7 +251,7 @@ function InsertData(position, daTa) {
 value.addEventListener('keyup', function() {
   // 문자 숫자 외의 키 입력 시 함수 재시작
   var x = event.keyCode;
-  if ((x > 8 && x < 48) || (x > 90 && x < 146)) {
+  if ((x > 8 && x < 32) || (x > 33 && x < 48) || (x > 90 && x < 146)) {
     alert("숫자 및 문자만 입력할 수 있습니다.");
     return;
   }
