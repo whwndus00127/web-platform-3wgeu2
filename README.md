@@ -1,4 +1,4 @@
-## 조주연 HTML 학습노트
+## 조주연 HTML / CSS / Javascript 
 <hr>
 
 ### 1월 7일
@@ -122,5 +122,11 @@
  * CSS의 display 속성을 사용하여 검색 기능 재구현
  
  * 함수를 역할에 따라 세분화하는 작업 
+ 
+ ### 1월 26일
+ 
+ * find를 사용하여 조건문 → 반복문의 불필요한 로직 제거
+ 
+ * find의 매개변수의 개념 및 역할 학
  
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
