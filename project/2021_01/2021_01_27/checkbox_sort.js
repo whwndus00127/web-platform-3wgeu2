@@ -1,5 +1,6 @@
 // onload 함수
 window.onload = function () {
+  reset_Data();
   createList("table_Head", result); // 테이블 헤드 생성
   InsertData("table_Body", result); // 테이블 바디 생성
   check_Default.checked = true; // 초기 체크 기본값 true
@@ -14,9 +15,18 @@ window.onload = function () {
     console.log(i);
       }
 
-  function sortEvent(e, x) {
+  function sortEvent(e) {
     title_Sort[e].addEventListener('click', function() {
-    w3.sortHTML('#table_Body', '.row', '.data:nth-child('+x+')')
+    //w3.sortHTML('#table_Body', '.row', '.data:nth-child('+x+')')
+    result.sort(function(a,b) {
+      return a[Object.keys(result[0])[e]] > b[Object.keys(result[0])[e]] ? -1 : a[Object.keys(result[0])[e]] > b[Object.keys(result[0])[e]] ? 1 : 0;
+    })
+    console.log(result)
+    while (bodyDiv.hasChildNodes())
+    {
+      bodyDiv.removeChild(bodyDiv.firstChild);
+    }
+    InsertData("table_Body", result);
   })
 }
 }
@@ -32,8 +42,8 @@ var op2_checkbox = document.querySelectorAll(
 var btn_Reset = document.querySelector("#btn_Reset");
 var checkArr = new Array();
 var check_Default = op2_checkbox[0]; // 체크박스의 기본값 지정
-var btn_sort = document.querySelector("#rank_Sort")
-var rank_Value;
+var btn_Reset = document.querySelector("#reset")
+var result;
 // Ctrl 키 클릭 시 옵션 숨기기 / 펼치기
 window.addEventListener('keyup', e => {
   var key = e.keyCode;
@@ -220,7 +230,8 @@ let copykey = info.map((obj) => {
   return Object.assign({}, obj);
 });
 // 객체에서 특정한 데이터를 빼고 생성
-var result = copykey.map((obj) => {
+function reset_Data() {
+  result = copykey.map((obj) => {
   for (k in obj) {
     if (k.includes("pq_")) {
       delete obj[k];
@@ -228,6 +239,8 @@ var result = copykey.map((obj) => {
   }
   return obj;
 });
+}
+
 
 // 체크한 값을 배열로 넣어주는 함수
 op2_checkbox.forEach(function (checkbox) {
@@ -337,3 +350,12 @@ function option1(value, chArr) {
 
     return a;
   }
+
+  btn_Reset.addEventListener('click', function() {
+    while (bodyDiv.hasChildNodes())
+    {
+      bodyDiv.removeChild(bodyDiv.firstChild);
+    }
+    reset_Data();
+    InsertData('table_Body', result);
+  })
