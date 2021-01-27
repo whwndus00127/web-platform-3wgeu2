@@ -5,10 +5,20 @@ window.onload = function () {
   check_Default.checked = true; // 초기 체크 기본값 true
   checkArr.push(check_Default.value); // 체크 기본값 체크 배열에 push
   title_Sort = document.querySelectorAll(".title_data");
+  //var title_arr = Array.prototype.slice.call(title_Sort);
+  console.log(title_Sort)
+  //console.log(title_arr)
 
-  title_Sort[1].addEventListener('click', function() {
-    w3.sortHTML('#table_Body', '.row', '.data:nth-child(2)')
+  for(var i = 0; i < title_Sort.length; i++){
+    sortEvent(i, i+1);
+    console.log(i);
+      }
+
+  function sortEvent(e, x) {
+    title_Sort[e].addEventListener('click', function() {
+    w3.sortHTML('#table_Body', '.row', '.data:nth-child('+x+')')
   })
+}
 }
 //w3.sortHTML('#table_Body', '.row', '.data')
 var value = document.querySelector("#value");
@@ -23,6 +33,7 @@ var btn_Reset = document.querySelector("#btn_Reset");
 var checkArr = new Array();
 var check_Default = op2_checkbox[0]; // 체크박스의 기본값 지정
 var btn_sort = document.querySelector("#rank_Sort")
+var rank_Value;
 // Ctrl 키 클릭 시 옵션 숨기기 / 펼치기
 window.addEventListener('keyup', e => {
   var key = e.keyCode;
