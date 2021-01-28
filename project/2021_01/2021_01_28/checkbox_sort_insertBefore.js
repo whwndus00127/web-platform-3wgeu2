@@ -80,6 +80,8 @@ window.onload = function () {
   }
   })
 }
+
+// 정렬초기화 버튼 클릭 시
 btn_Reset.addEventListener('click', function() {
   if(confirm("확인 클릭 시 정렬을 초기화 합니다.")) {
     sort_Count = 0;
