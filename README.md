@@ -151,5 +151,7 @@
  
  * replace 기능을 이해하고 각 제목 클릭 시 문자가 변경되도록 구현
  
+ * click 이벤트리스너에 타겟을 지정하여 타겟에 맞는 데이터를 출력하는 방법 학습
  
+ * div 태그에 id 값을 주어 insertBefore로 정렬하는 방법 학습
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
