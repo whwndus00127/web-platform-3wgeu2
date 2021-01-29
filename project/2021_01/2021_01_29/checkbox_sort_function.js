@@ -6,112 +6,112 @@ window.onload = function () {
   check_Default.checked = true; // 초기 체크 기본값 true
   checkArr.push(check_Default.value); // 체크 기본값 체크 배열에 push
   title_Sort = document.querySelectorAll(".title_data");
+  title_Sort[0].textContent += '▲';
   var row = document.querySelectorAll('.row');
   var sort_Count = 0;
-  //var title_arr = Array.prototype.slice.call(title_Sort);
-  //console.log(title_Sort)
-  //console.log(title_arr)
-  //console.log(row);
 
   // 각 타이틀 클릭 위치를 매개변수로 전달 [0, 1, 2, 3]
   for(var i = 0; i < title_Sort.length; i++){
     sortEvent(i, i+1);
     console.log(i);
-      }
+  }
     
   // 매개변수를 받아서 함수 실행
   function sortEvent(e) {
     title_Sort[e].addEventListener('click', function() {
+    title_reset(title_Sort);
     if(sort_Count == 0) {
       sort_Count = 1; // 타이틀 한번 클릭 시 카운트 1로 대입
+      title_Sort[e].textContent = title_Sort[e].textContent.replace('▲', ''); // 오름차순 기호 추가
+      title_Sort[e].textContent += '▼';
     } else { 
       sort_Count = 0; // 이미 클릭한 적이 있으면 (카운트가 1일경우) 0으로 대입
+      title_Sort[e].textContent = title_Sort[e].textContent.replace('▼', ''); // 내림차순 기호 추가
+      title_Sort[e].textContent += '▲';
     }
 
+    if (sort_Count == 1) {
     var sort_Arr = [];
-    for(var i = 0; i < Object.values(result).length; i++) {
-    sort_Arr[i] = Object.values(result[i])[e]; // result 객체를 다른 배열로 생성
-    }
-    //console.log(sort_Arr)
-    if (sort_Count == 1) { // 클릭 시 내림차순 정렬 실행
+    create_SortArray(result, sort_Arr, e);
+    
+    // 클릭 시 내림차순 정렬 실행
     var temp;
-    for(var i = 0; i < sort_Arr.length-1; i++) {
-      for(j = 0; j < sort_Arr.length - 1 - i; j++) {
-        if(sort_Arr[j] < sort_Arr[j + 1]) {
-          bodyDiv.insertBefore(row[j+1], row[j]);
-          row = document.querySelectorAll('.row');
-          temp = sort_Arr[j];
-          sort_Arr[j] = sort_Arr[j+1];
-          sort_Arr[j+1] = temp;
-          //console.log(sort_Arr)
-      } 
-    }
-  }
-  // result 객체도 내림차순으로 정렬
-  result.sort(function(a,b) {
-    return a[Object.keys(result[0])[e]] > b[Object.keys(result[0])[e]] ? -1 : a[Object.keys(result[0])[e]] > b[Object.keys(result[0])[e]] ? 1 : 0;
-  })
+    sort_Arr_desc(sort_Arr, temp);
+
+    sort_Object_Desc(result, e);
 
 } else { // 다시 한번 더 클릭하면 오름차순 정렬 실행
-  var sort_Arr = [];
-    for(var i = 0; i < Object.values(result).length; i++) {
-    sort_Arr[i] = Object.values(result[i])[e]; // 내림차순 result 객체를 새로운 배열로 생성
-    }
+  
+    var sort_Arr = [];
+    create_SortArray(result, sort_Arr, e);
     //console.log(sort_Arr)
-  var  temp;
-    for(var i = 0; i < sort_Arr.length-1; i++) {
-      for(j = 0; j < sort_Arr.length - 1 - i; j++) {
-        if(sort_Arr[j] > sort_Arr[j + 1]) {
-          bodyDiv.insertBefore(row[j+1], row[j]);
-          row = document.querySelectorAll('.row');
-          temp = sort_Arr[j];
-          sort_Arr[j] = sort_Arr[j+1];
-          sort_Arr[j+1] = temp;
-          //console.log(sort_Arr)
-  }
-      }
-    }
+    var temp;
+
+    sort_Arr_asc(sort_Arr, temp);
+
     // result 객체도 오름차순으로 정렬
-    result.sort(function(a,b) {
-      return a[Object.keys(result[0])[e]] < b[Object.keys(result[0])[e]] ? -1 : a[Object.keys(result[0])[e]] > b[Object.keys(result[0])[e]] ? 1 : 0;
-    })
-    //console.log(result);
-    //console.log(row)
-  }
+    sort_Object_Asc(result, e);
+    }
   })
 }
 
 // 정렬초기화 버튼 클릭 시
 btn_Reset.addEventListener('click', function() {
   if(confirm("확인 클릭 시 정렬을 초기화 합니다.")) {
-    sort_Count = 0;
+    title_reset(title_Sort);
+    title_Sort[0].textContent += '▲';
+    sort_Count = 0; 
     var sort_Arr = [];
-    for(var i = 0; i < Object.values(result).length; i++) {
-      sort_Arr[i] = Object.values(result[i])[0];
-      console.log(sort_Arr)
-      }
-      var j, temp;
-    for(var i = 0; i < sort_Arr.length-1; i++) {
-      for(j = 0; j < sort_Arr.length - 1 - i; j++) {
-        if(sort_Arr[j] > sort_Arr[j + 1]) {
-          bodyDiv.insertBefore(row[j+1], row[j]);
-          row = document.querySelectorAll('.row');
-          temp = sort_Arr[j];
-          sort_Arr[j] = sort_Arr[j+1];
-          sort_Arr[j+1] = temp;
+    create_SortArray(result, sort_Arr, 0);
+
+    var temp;
+    sort_Arr_asc(sort_Arr, temp);
           //console.log(sort_Arr)
-  }
-      }
-    }
-    result.sort(function(a,b) {
-      return a[Object.keys(result[0])[0]] < b[Object.keys(result[0])[0]] ? -1 : a[Object.keys(result[0])[0]] > b[Object.keys(result[0])[0]] ? 1 : 0;
-    })
+
+    sort_Object_Asc(result, 0);
   } else {
       alert("정렬을 취소하였습니다.");
   }
 })
+
+  // 각 타이틀 클릭 시 기호 제거
+  function title_reset(title_arr) {
+    for(var i = 0; i < title_arr.length; i++) {
+      title_arr[i].textContent = title_arr[i].textContent.replace('▲', '');
+      title_arr[i].textContent = title_arr[i].textContent.replace('▼', '');
+    }
+  }
+  // 객체 배열 내림차순 정렬 함수
+  function sort_Arr_desc (arr, object_temp) {
+    for(var i = 0; i < arr.length-1; i++) {
+      for(j = 0; j < arr.length - 1 - i; j++) {
+        if(arr[j] < arr[j + 1]) {
+          bodyDiv.insertBefore(row[j+1], row[j]);
+          row = document.querySelectorAll('.row');
+          object_temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = object_temp;
+      } 
+    }
+  }
 }
-//w3.sortHTML('#table_Body', '.row', '.data')
+// 객체 배열 오름차순 정렬 함수
+  function sort_Arr_asc (arr, object_temp) {
+    for(var i = 0; i < arr.length-1; i++) {
+      for(j = 0; j < arr.length - 1 - i; j++) {
+        if(arr[j] > arr[j + 1]) {
+          bodyDiv.insertBefore(row[j+1], row[j]);
+          row = document.querySelectorAll('.row');
+          object_temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = object_temp;
+      } 
+    }
+  }
+}
+
+} // onload 종료지점
+
 var value = document.querySelector("#value");
 var bodyDiv = document.querySelector("#table_Body");
 var headDiv = document.querySelector("#table_Head");
@@ -125,8 +125,7 @@ var checkArr = new Array();
 var check_Default = op2_checkbox[0]; // 체크박스의 기본값 지정
 var btn_Reset = document.querySelector("#reset")
 var result;
-var row = document.querySelectorAll('.row');
-var data = document.querySelectorAll('.data');
+
 // Ctrl 키 클릭 시 옵션 숨기기 / 펼치기
 window.addEventListener('keyup', e => {
   var key = e.keyCode;
@@ -323,7 +322,25 @@ function reset_Data() {
   return obj;
 });
 }
+// 객체 내림차순 정렬 함수
+function sort_Object_Desc(table, tab){
+result.sort(function(a,b) {
+  return a[Object.keys(table[0])[tab]] > b[Object.keys(table[0])[tab]] ? -1 : a[Object.keys(table[0])[tab]] > b[Object.keys(table[0])[tab]] ? 1 : 0;
+})
+}
+// 객체 오름차순 정렬 함수
+function sort_Object_Asc(table, tab){
+  result.sort(function(a,b) {
+    return a[Object.keys(table[0])[tab]] < b[Object.keys(table[0])[tab]] ? -1 : a[Object.keys(table[0])[tab]] > b[Object.keys(table[0])[tab]] ? 1 : 0;
+  })
+  }
 
+  // 객체를 다른 배열로 생성하는 함수
+  function create_SortArray(table, arr, value){
+  for(var i = 0; i < Object.values(table).length; i++) {
+    arr[i] = Object.values(table[i])[value]; // result 객체를 다른 배열로 생성
+    }
+  }
 
 // 체크한 값을 배열로 넣어주는 함수
 op2_checkbox.forEach(function (checkbox) {
@@ -433,5 +450,3 @@ function option1(value, chArr) {
 
     return a;
   }
-
-
