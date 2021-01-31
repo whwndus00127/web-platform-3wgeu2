@@ -1,6 +1,9 @@
 ## 조주연 HTML / CSS / Javascript 
 <hr>
 
+<details>
+ <summary>2021년 1월</summary>
+
 ### 1월 7일
 
  * CSS에서 중요한 개념인 선택자(selector) 학습
@@ -154,4 +157,6 @@
  * click 이벤트리스너에 타겟을 지정하여 타겟에 맞는 데이터를 출력하는 방법 학습
  
  * div 태그에 id 값을 주어 insertBefore로 정렬하는 방법 학습
+ 
+ </details>
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
