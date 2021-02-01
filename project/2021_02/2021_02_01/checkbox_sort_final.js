@@ -58,11 +58,7 @@ btn_Reset.addEventListener('click', function() {
   alert("정렬을 초기화합니다.");
 
 })
-
-
-
 } // onload 종료지점
-
 var value = document.querySelector("#value");
 var bodyDiv = document.querySelector("#table_Body");
 var headDiv = document.querySelector("#table_Head");
@@ -371,7 +367,6 @@ function sort_Object(obj, parents, row) {
     }
   }
 }
-
 
 // 테이블 갱신 (기존 데이터와 필터 데이터 비교)
 function search(filterData, body_row) {
