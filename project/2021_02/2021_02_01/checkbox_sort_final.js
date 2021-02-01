@@ -283,7 +283,7 @@ function InsertData(position, daTa) {
   for (var i in Object.values(daTa)) {
     rowDiv = document.createElement("div");
     w3.addClass(rowDiv, 'row');
-    rowDiv.id = 'row'+Object.values(daTa[i])[0];
+    rowDiv.id = 'row'+daTa[i]['rank'];
     for (var j = 0; j < Object.keys(daTa[i]).length; j++) {
       dataDiv = document.createElement("div");
       dataDiv = document.createElement("div");
@@ -329,7 +329,7 @@ value.addEventListener('keyup', function() {
 function sort_Object(obj, row) {
   for(var j = 0; j < obj.length; j++) {
   for(var i = 0; i < obj.length; i++) {
-      // 정렬 과정을 마친 result 테이블과 row의 값을 비교하여 정렬
+      // 정렬 과정을 마친 result 테이블과 row의 id값을 비교하여 정렬
       ('row' + obj[j]['rank']) == (bodyDiv.childNodes[i].id) ? row[j].parentNode.insertBefore(row[i], null) : "";
       row = document.querySelectorAll('.row');
     }
