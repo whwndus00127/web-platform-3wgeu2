@@ -8,6 +8,9 @@ window.onload = function () {
   title_Sort = document.querySelectorAll(".title_data");
   var row = document.querySelectorAll('.row');
   var sort_Status = 'desc';
+  sort_pre_asc = document.querySelectorAll('.sort_pre_asc');
+  sort_pre_desc = document.querySelectorAll('.sort_pre_desc');
+  w3.hide("span");
 
   // 타겟을 사용한 클릭 이벤트 리스너
 document.querySelector('#id_title').addEventListener('click', function(e) {
@@ -15,6 +18,17 @@ document.querySelector('#id_title').addEventListener('click', function(e) {
   if(e.target && e.target.nodeName == 'DIV') {
     var click_Title = e.target.id;
     console.log(click_Title)
+
+    for(var i = 0; i < title_Sort.length; i++) {
+    if(click_Title == title_Sort[i].id && sort_Status == 'desc') {
+      w3.hide("span");
+      w3.show(sort_pre_desc[i]);
+    } else if(click_Title == title_Sort[i].id && sort_Status == 'asc') {
+      w3.hide("span");
+      w3.show(sort_pre_asc[i]);
+    }
+    }
+
     // 클릭한 타겟의 값에 따라 정렬 데이터도 바뀜
     if(sort_Status == 'desc') { // 현재 정렬상태 asc : 오름차순 / desc : 내림차순
     console.log(click_Title)
@@ -34,6 +48,7 @@ document.querySelector('#id_title').addEventListener('click', function(e) {
 
 btn_Reset.addEventListener('click', function() {
   sort_Status = 'desc';
+  w3.hide("span");
   result.sort(function(a,b) {
     return a['rank'] < b['rank'] ? -1 : a['rank'] > b['rank'] ? 1 : 0;
   })
@@ -282,11 +297,20 @@ function createList(position, daTa) {
   titleRow.id = 'id_title';
   for (var i = 0; i < Object.keys(daTa[i]).length; i++) {
     dataDiv = document.createElement("div");
+    sort_Div = document.createElement("div");
+    let sort_pre_asc = document.createElement("span");
+    let sort_pre_desc = document.createElement("span");
     document.getElementById(position).appendChild(titleRow);
     titleRow.appendChild(dataDiv);
     w3.addClass(dataDiv, 'title_data');
-    dataDiv.id = Object.keys(daTa[0])[i]
+    dataDiv.id = Object.keys(daTa[0])[i];
     dataDiv.textContent = Object.keys(daTa[0])[i];
+    dataDiv.appendChild(sort_pre_asc);
+    dataDiv.appendChild(sort_pre_desc);
+    w3.addClass(sort_pre_asc, 'sort_pre_asc');
+    w3.addClass(sort_pre_desc, 'sort_pre_desc');
+    sort_pre_asc.textContent = '▲';
+    sort_pre_desc.textContent = '▼';
   }
 }
 // 초기 데이터 삽입
@@ -296,7 +320,6 @@ function InsertData(position, daTa) {
     w3.addClass(rowDiv, 'row');
     rowDiv.id = 'row'+daTa[i]['rank'];
     for (var j = 0; j < Object.keys(daTa[i]).length; j++) {
-      dataDiv = document.createElement("div");
       dataDiv = document.createElement("div");
       document.getElementById(position).appendChild(rowDiv);
       rowDiv.appendChild(dataDiv);
