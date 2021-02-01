@@ -19,6 +19,7 @@ document.querySelector('#id_title').addEventListener('click', function(e) {
     var click_Title = e.target.id;
     console.log(click_Title)
 
+    // 정렬 시 각 탭에 기호 보여주기 / 숨기기
     for(var i = 0; i < title_Sort.length; i++) {
     if(click_Title == title_Sort[i].id && sort_Status == 'desc') {
       w3.hide("span");
@@ -46,6 +47,7 @@ document.querySelector('#id_title').addEventListener('click', function(e) {
   sort_Object(result, bodyDiv, row);
 })
 
+// 정렬 초기화 기능 [rank를 오름차순으로 다시 초기화]
 btn_Reset.addEventListener('click', function() {
   sort_Status = 'desc';
   w3.hide("span");
