@@ -169,7 +169,7 @@
  
  * 이벤트리스너에 target을 지정하여 각각의 노드마다 이벤트를 지정하는 기능 구현
  
- * 전체적인 코드 개선 -- 60행의 코드 
+ * 전체적인 코드 개선 -- 60행의 코드 감소
  
  </details>
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
