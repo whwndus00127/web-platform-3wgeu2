@@ -8,38 +8,28 @@ window.onload = function () {
   title_Sort = document.querySelectorAll(".title_data");
   title_Sort[0].textContent += '▲';
   var row = document.querySelectorAll('.row');
-  var sort_Count = 0;
-
-  // 각 타이틀 클릭 위치를 매개변수로 전달 [0, 1, 2, 3]
-  for(var i = 0; i < title_Sort.length; i++){
-   // sortEvent(i);
-    console.log(i);
-  }
+  var sort_Status = 'desc';
 
   // 타겟을 사용한 클릭 이벤트 리스너
 document.querySelector('#id_title').addEventListener('click', function(e) {
+  console.log(sort_Status);
   if(e.target && e.target.nodeName == 'DIV') {
-    console.log(e.target);
-    console.log(e.target.id);
     var click_Title = e.target.id;
-    console.log(click_Title)
     // 클릭한 타겟의 값에 따라 정렬 데이터도 바뀜
+    if(sort_Status == 'desc') { // 현재 정렬상태 asc : 오름차순 / desc : 내림차순
+    sort_Status = 'asc';
     result.sort(function(a,b) {
       return a[click_Title] > b[click_Title] ? -1 : a[click_Title] > b[click_Title] ? 1 : 0;
     })
-
-    console.log(result);
-
-    if(click_Title == 'rank') {
-      //var test = result.map(obj => { return obj[click_Title] })
-      //console.log(test)
-      for(var i = 0; i < result.length; i++) {
-        console.log(row[i].firstChild.textContent)
-      }
-    }
+  } else {
+    sort_Status = 'desc';
+    result.sort(function(a,b) {
+      return a[click_Title] < b[click_Title] ? -1 : a[click_Title] > b[click_Title] ? 1 : 0;
+    })
   }
+  }
+  sort_Object(result, row);
 })
-
 
 
 } // onload 종료지점
@@ -293,6 +283,7 @@ function InsertData(position, daTa) {
   for (var i in Object.values(daTa)) {
     rowDiv = document.createElement("div");
     w3.addClass(rowDiv, 'row');
+    rowDiv.id = 'row'+Object.values(daTa[i])[0];
     for (var j = 0; j < Object.keys(daTa[i]).length; j++) {
       dataDiv = document.createElement("div");
       dataDiv = document.createElement("div");
@@ -333,6 +324,16 @@ value.addEventListener('keyup', function() {
   
   search(data, row);
 });
+
+// 정렬 함수
+function sort_Object(obj, row) {
+  for(var j = 0; j < obj.length; j++) {
+  for(var i = 0; i < obj.length; i++) {
+      // 정렬 과정을 마친 result 테이블과 row의 값을 비교하여 정렬
+      Object.values(obj[j])[0] == row[i].childNodes[0].textContent ? row[j].parentNode.insertBefore(row[i], null) : "";
+    }
+  }
+}
 
 // 테이블 갱신 (기존 데이터와 필터 데이터 비교)
 function search(filterData, body_row) {
