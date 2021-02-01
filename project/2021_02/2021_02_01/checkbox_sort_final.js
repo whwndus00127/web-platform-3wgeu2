@@ -6,7 +6,6 @@ window.onload = function () {
   check_Default.checked = true; // 초기 체크 기본값 true
   checkArr.push(check_Default.value); // 체크 기본값 체크 배열에 push
   title_Sort = document.querySelectorAll(".title_data");
-  title_Sort[0].textContent += '▲';
   var row = document.querySelectorAll('.row');
   var sort_Status = 'desc';
 
@@ -15,8 +14,10 @@ document.querySelector('#id_title').addEventListener('click', function(e) {
   console.log(sort_Status);
   if(e.target && e.target.nodeName == 'DIV') {
     var click_Title = e.target.id;
+    console.log(click_Title)
     // 클릭한 타겟의 값에 따라 정렬 데이터도 바뀜
     if(sort_Status == 'desc') { // 현재 정렬상태 asc : 오름차순 / desc : 내림차순
+    console.log(click_Title)
     sort_Status = 'asc';
     result.sort(function(a,b) {
       return a[click_Title] > b[click_Title] ? -1 : a[click_Title] > b[click_Title] ? 1 : 0;
@@ -31,6 +32,17 @@ document.querySelector('#id_title').addEventListener('click', function(e) {
   sort_Object(result, bodyDiv, row);
 })
 
+btn_Reset.addEventListener('click', function() {
+  sort_Status = 'desc';
+  result.sort(function(a,b) {
+    return a['rank'] < b['rank'] ? -1 : a['rank'] > b['rank'] ? 1 : 0;
+  })
+  sort_Object(result, bodyDiv, row);
+  alert("정렬을 초기화합니다.");
+
+})
+
+
 
 } // onload 종료지점
 
@@ -42,7 +54,6 @@ var absolute = document.querySelector("#absolute");
 var op2_checkbox = document.querySelectorAll(
   "input[type=checkbox][name=option2]"
 );
-var btn_Reset = document.querySelector("#btn_Reset");
 var checkArr = new Array();
 var check_Default = op2_checkbox[0]; // 체크박스의 기본값 지정
 var btn_Reset = document.querySelector("#reset")
@@ -335,6 +346,7 @@ function sort_Object(obj, parents, row) {
     }
   }
 }
+
 
 // 테이블 갱신 (기존 데이터와 필터 데이터 비교)
 function search(filterData, body_row) {
