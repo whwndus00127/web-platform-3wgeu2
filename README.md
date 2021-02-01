@@ -165,7 +165,9 @@
  
  ### 2월 1일
  
- *
+ * div 태그에 id 값을 부여하고 정렬하는 기능 구현
+ 
+ * 이벤트리스너에 target을 지정하여 각각의 노드마다 이벤트를 지정하는 기능 구현
  
  </details>
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-3wgeu2)
