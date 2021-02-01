@@ -330,7 +330,8 @@ function sort_Object(obj, row) {
   for(var j = 0; j < obj.length; j++) {
   for(var i = 0; i < obj.length; i++) {
       // 정렬 과정을 마친 result 테이블과 row의 값을 비교하여 정렬
-      Object.values(obj[j])[0] == row[i].childNodes[0].textContent ? row[j].parentNode.insertBefore(row[i], null) : "";
+      ('row' + obj[j]['rank']) == (bodyDiv.childNodes[i].id) ? row[j].parentNode.insertBefore(row[i], null) : "";
+      row = document.querySelectorAll('.row');
     }
   }
 }
@@ -338,10 +339,10 @@ function sort_Object(obj, row) {
 // 테이블 갱신 (기존 데이터와 필터 데이터 비교)
 function search(filterData, body_row) {
     for(var i = 0; i < result.length; i++) {
-    var test = filterData.find(function (element) {
+    var refresh = filterData.find(function (element) {
       return result[i].rank == element.rank;
     })
-    if(test != undefined){ // undefined 항목에만 display : none 적용
+    if(refresh != undefined){ // undefined 항목에만 display : none 적용
     //body_row[i].style.display = "table";
     w3.addStyle(body_row[i], 'display', 'table');
     } else {
