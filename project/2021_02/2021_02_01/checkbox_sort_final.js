@@ -269,6 +269,7 @@ function reset_Data() {
 });
 }
 
+
 // 체크한 값을 배열로 넣어주는 함수
 op2_checkbox.forEach(function (checkbox) {
   checkbox.addEventListener("change", function () {
