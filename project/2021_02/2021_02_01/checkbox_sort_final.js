@@ -28,7 +28,7 @@ document.querySelector('#id_title').addEventListener('click', function(e) {
     })
   }
   }
-  sort_Object(result, row);
+  sort_Object(result, bodyDiv, row);
 })
 
 
@@ -326,11 +326,11 @@ value.addEventListener('keyup', function() {
 });
 
 // 정렬 함수
-function sort_Object(obj, row) {
+function sort_Object(obj, parents, row) {
   for(var j = 0; j < obj.length; j++) {
   for(var i = 0; i < obj.length; i++) {
       // 정렬 과정을 마친 result 테이블과 row의 id값을 비교하여 정렬
-      ('row' + obj[j]['rank']) == (bodyDiv.childNodes[i].id) ? row[j].parentNode.insertBefore(row[i], null) : "";
+      ('row' + obj[j]['rank']) == (parents.childNodes[i].id) ? row[j].parentNode.insertBefore(row[i], null) : "";
       row = document.querySelectorAll('.row');
     }
   }
